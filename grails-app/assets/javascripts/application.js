@@ -6,15 +6,17 @@
 // to create separate JavaScript files as needed.
 //
 //= require jquery
+//= require bootstrap
+//= require metisMenu
 //= require_tree .
-//= require_self
+//= require datamaps.world.min
 
-if (typeof jQuery !== 'undefined') {
-	(function($) {
-		$('#spinner').ajaxStart(function() {
-			$(this).fadeIn();
-		}).ajaxStop(function() {
-			$(this).fadeOut();
-		});
-	})(jQuery);
-}
+
+
+
+
+
+
+
+
+
