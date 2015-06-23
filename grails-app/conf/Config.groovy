@@ -95,6 +95,13 @@ environments {
     }
 }
 
+
+grails.fda.apiKey="em8sO4WepQ8ZKpADXibF7C8LncloJjVn4hho4PoO"
+grails.fda.apiURL="https://api.fda.gov/food/enforcement"
+grails.rest.injectInto = ["Controller", "Service"]
+
+rest.https.cert.hostnameVerifier='ALLOW_ALL'
+
 // log4j configuration
 log4j.main = {
     // Example of changing the log pattern for the default console appender:

@@ -6,7 +6,6 @@ var FPOC = FPOC || {};
 
 var map
 FPOC.INIT = {
-
     init: function () {
         this.getGeoLocation()
         this.initWindow()
@@ -45,6 +44,9 @@ FPOC.INIT = {
         map = new Datamap({
             scope: 'usa',
             responsive: true,
+            geographyConfig: {
+                highlightOnHover:false
+            },
             element: document.getElementById('map'),
             done: function (datamap) {
 
@@ -60,47 +62,72 @@ FPOC.INIT = {
     },
 
 
-
     handleMapClick: function (dataMap) {
 
         dataMap.svg.selectAll('.datamaps-subunit').on('click', function (geography) {
-            console.log(d3.event.pageY)
-            console.log(geography.properties.name);
+            console.log(geography);
+
+            FPOC.INIT.revertCurrentState()
+            FPOC.INIT.setCurrentState(geography.id)
+            FPOC.INIT.updateCurrentState()
         });
 
 
     },
-    getGeoLocation:function() {
+    getGeoLocation: function () {
 
-        if (navigator.geolocation){
-            console.log("CP",navigator.geolocation.getCurrentPosition(getCoords))
+        if (navigator.geolocation) {
+            console.log("CP", navigator.geolocation.getCurrentPosition(getCoords))
         }
 
-        function getCoords(position){
+        function getCoords(position) {
             console.log(position)
 
 
-
             $.getJSON('https://maps.googleapis.com/maps/api/geocode/json',
-                {latlng:position.coords.latitude+"," +position.coords.longitude},function(results){
+                {latlng: position.coords.latitude + "," + position.coords.longitude}, function (results) {
 
-               if (results.status === "OK"){
-                   address = results.results[0]
-                console.log(address)
-                   var colors = d3.scale.category10();
-                if (address.address_components.length == 9){
-                    FPOC.STATE =address.address_components[5].short_name
-                    console.log(FPOC.STATE)
+                    if (results.status === "OK") {
+                        address = results.results[0]
+                        console.log(address)
+                        if (address.address_components.length == 9) {
+                            FPOC.INIT.setCurrentState(address.address_components[5].short_name)
+                            FPOC.INIT.updateCurrentState()
 
-                    data={}
-                    data[FPOC.STATE] =colors(Math.random()*100)
+                        }
+
                     }
-                    map.updateChoropleth(data)
-                }
 
 
-            })
+                })
         }
+    },
+    updateCurrentState: function (e) {
+        var colors = d3.scale.category10();
+        console.log("CurrentState", FPOC.INIT.getCurrentState())
+        data = {}
+        data[FPOC.INIT.getCurrentState()] = colors(Math.random() * 100)
+
+        map.updateChoropleth(data)
+
+    },
+
+    revertCurrentState: function () {
+
+
+        data = {}
+        data[FPOC.INIT.getCurrentState()] = '#abdda4'
+
+        map.updateChoropleth(data)
+
+    },
+
+    setCurrentState: function (e) {
+
+        FPOC.STATE = e
+    },
+    getCurrentState: function () {
+        return FPOC.STATE
     }
 };
 
