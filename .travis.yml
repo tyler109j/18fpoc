@@ -1,17 +1,17 @@
 language: groovy
 jdk:
-  - oraclejdk7
+- oraclejdk7
 branches:
   only:
-    - developer
-script: ./grailsw refresh-dependencies
-  && ./grailsw "test-app unit:"
-
+  - developer
+script: ./grailsw refresh-dependencies && ./grailsw "test-app unit:"
 deploy:
-  provider :openshift
-  user:'hsingh@iworkscorp.com'
-  password:'YdVfA7dBVv'
-  app:
-    developer:'jbossews'
-    master:'18fpoc'
-  domain:'iworksfda'
+  provider: openshift
+  user: hsingh@iworkscorp.com
+  password:
+    secure: md9XjG0GwElnDcmEcgM0WmWeVLttnt+T2b2gRko12Pc+fecbf2T8OcTT0mhunvy9WfRhCfS+mv43zTEaVYJlOwiJqnMn/KdxE56kFWmhtAh8vuvo2KgMZ1mMCPIaWapzltEB9rEDex8/aGXdLVWrEaXtFPXLwcNu1hchCnwFyfQi7HvwvbK0WCZNx1aW+gKnMJoLcli01eTNEzo+EnkwDSjdQzswtu3cafTr4Kxxr6Q0yDmmYaAih5rsWvzQ4lxtsfgMUmkPM9rofMdWehBnKMqo3S5QZanqApPPccP+9znQd22nhPwe3oTVQ99kEWivE2wZZ1DIkZ5OuW56BROLNe4xPX4d300Koa2g7nevZOpU9nvoaAqL1SLrYL1FjN/q5yRZdFzkvO2z9W27BPH8j0QBZlbN81MuKmUO4EUbZw9o4okeJoP5IKfDy3IvU9JB1WrKuXQiLGNgKpRMI9wApRrtM6BJL1hUWusIYfeN9G85jXi0Wt+5IsUKKtApEi9T/ECNBlPzRaKtg2n/snKjikggSAnDdERqqYQnFaquor6KP7wo7mZqXHJkP5qhYfgnbd/cGz3NiYZ1snBCLdOYp7nV7m5QmtoqFwsaYntIj0x0StkXGG1fuMG/zpLCS60duol7Uqpzg/nNwfvT36qIalZMlufNM30l7wljJPFj8vI=
+  app: jbossews
+  domain: iworksfda
+  on:
+    repo: iworkscorp/18fpoc
+    branch: developer
