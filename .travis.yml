@@ -15,5 +15,3 @@ deploy:
   on:
     repo: iworkscorp/18fpoc
     branch: developer
-
-
