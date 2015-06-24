@@ -14,12 +14,15 @@ class PocController {
 
         parameterMap.remove('action')
         parameterMap.remove('controller')
+        parameterMap.remove('format')
 
-        println parameterMap.collect {it->}.join('+')
+        String searchString =parameterMap.collect{it}.join('+AND+')
 
-         //def returnData = pocService.queryFDA(parameterMap)
+        println "searchString |" + searchString
 
-        //println returnData
+         def returnData = pocService.queryFDA(searchString)
+
+        render contentType:'application/json',text:returnData
 
     }
 }

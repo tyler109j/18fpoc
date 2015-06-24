@@ -6,3 +6,12 @@ branches:
     - developer
 script: ./grailsw refresh-dependencies
   && ./grailsw "test-app unit:"
+
+deploy:
+  provider :openshift
+  user:'hsingh@iworkscorp.com'
+  password:'YdVfA7dBVv'
+  app:
+    developer:'jbossews'
+    master:'18fpoc'
+  domain:'iworksfda'

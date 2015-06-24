@@ -97,7 +97,7 @@ environments {
 
 
 grails.fda.apiKey="em8sO4WepQ8ZKpADXibF7C8LncloJjVn4hho4PoO"
-grails.fda.apiURL="https://api.fda.gov/food/enforcement"
+grails.fda.apiURL='http://api.fda.gov/food'
 grails.rest.injectInto = ["Controller", "Service"]
 
 rest.https.cert.hostnameVerifier='ALLOW_ALL'

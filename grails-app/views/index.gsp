@@ -34,10 +34,10 @@
             </div>
 
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-lg-6">
                     <form class="form-horizontal" role="form" method="POST">
                         <div class="row">
-                            <div class="col-sm-3">
+                            <div class="col-sm-4" style="margin-top:10px">
                                 <div class="input-group"><span class="input-group-addon"
                                                                id="recallStatuslbcl">Recall Status</span>
 
@@ -50,17 +50,18 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-5">
+                            <div class="col-sm-4" style="margin-top:10px">
                                 <div class="input-group"><span class="input-group-addon" id="basic-addon2">Search</span>
 
                                     <input type="text" class="form-control" aria-describedby="basic-addon1" id="search" name="search">
                                 </div>
                             </div>
 
-                            <div class="col-sm-3">
+                            <div class="col-sm-3" style="margin-top:10px">
                                 <div class="input-group"><span class="input-group-addon" id="basic-addon3">State</span>
 
-                                    <select name="state" class="form-control">
+                                    <select name="state" class="form-control" id="state">
+                                        <option value="NA"></option>
                                         <option value="AL">AL</option>
                                         <option value="AK">AK</option>
                                         <option value="AZ">AZ</option>
@@ -116,7 +117,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-1">
+                            <div class="col-sm-1" style="margin-top:10px">
 
                                 <button type="button" class="btn btn-success">Submit</button>
                             </div>
@@ -125,7 +126,7 @@
 
                 </div>
 
-                <div class="col-sm-6"></div>
+                <div class="col-lg-6"></div>
             </div>
 
             <div class="row">

@@ -10,6 +10,8 @@ FPOC.INIT = {
         this.getGeoLocation()
         this.initWindow()
         this.initMap();
+        this.initClickHandlerForState()
+        this.handleSearchSubmission()
 
     },
 
@@ -45,7 +47,7 @@ FPOC.INIT = {
             scope: 'usa',
             responsive: true,
             geographyConfig: {
-                highlightOnHover:false
+                highlightOnHover: false
             },
             element: document.getElementById('map'),
             done: function (datamap) {
@@ -70,6 +72,7 @@ FPOC.INIT = {
             FPOC.INIT.revertCurrentState()
             FPOC.INIT.setCurrentState(geography.id)
             FPOC.INIT.updateCurrentState()
+            FPOC.INIT.updateStateControl()
         });
 
 
@@ -90,9 +93,11 @@ FPOC.INIT = {
                     if (results.status === "OK") {
                         address = results.results[0]
                         console.log(address)
-                        if (address.address_components.length == 9) {
+                        if (address.address_components.length >= 8) {
                             FPOC.INIT.setCurrentState(address.address_components[5].short_name)
                             FPOC.INIT.updateCurrentState()
+
+                            FPOC.INIT.updateStateControl()
 
                         }
 
@@ -128,6 +133,27 @@ FPOC.INIT = {
     },
     getCurrentState: function () {
         return FPOC.STATE
+    },
+    updateStateControl: function (e) {
+        $('#state').val(FPOC.STATE)
+    },
+    initClickHandlerForState: function () {
+
+        $('#state').on('change', function (e) {
+            console.log("currentState",$(this).val() )
+            FPOC.INIT.revertCurrentState()
+            FPOC.INIT.setCurrentState($(this).val())
+            FPOC.INIT.updateCurrentState()
+
+
+        })
+
+    },
+
+    handleSearchSubmission:function() {
+
+       $('#searchSubmit')
+
     }
 };
 

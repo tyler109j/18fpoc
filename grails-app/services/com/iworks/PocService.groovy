@@ -1,23 +1,25 @@
 package com.iworks
 
 import grails.transaction.Transactional
-import groovyx.net.http.ContentType
 
-@Transactional(readOnly =true)
+@Transactional(readOnly = true)
 class PocService {
 
 
     def grailsApplication
 
-    def queryFDA(def parameters) {
+    def queryFDA(String parameters) {
 
-        def returnData
-        withHttp(uri: grailsApplication.config.grails.fda.apiURL, contentType: ContentType.JSON) {
+        StringBuffer strBuffer = new StringBuffer()
 
 
-            returnData = get(query: parameters.collect { it }.join('+'))
-        }
+        strBuffer << grailsApplication.config.grails.fda.apiURL << "/enforcement.json" << "?api_key=" << grailsApplication.config.grails.fda.apiKey << "&" << parameters << "&limit=" <<100
+
+        println strBuffer
+        strBuffer.toURL().text
+
 
     }
+
 
 }
