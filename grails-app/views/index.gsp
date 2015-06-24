@@ -138,25 +138,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-6 col-md-6">
-                    <table id="fdaData" class="display" cellspacing="0" width="100%">
-                        <thead>
-                        <tr>
-                            <th>Product Description</th>
-                            <th>Recalling Firm</th>
-                            <th>Classification</th>
-                            <th>Id</th>
-
-                        </tr>
-                        </thead>
-
-
-                        <tbody>
-
-                        </tbody>
-
-
-                    </table>
+                <div class="col-lg-6 col-md-6" id="tblData">
                 </div>
 
             </div>

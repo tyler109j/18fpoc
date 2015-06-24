@@ -12,6 +12,7 @@ FPOC.INIT = {
         this.initMap();
         this.initClickHandlerForState()
         this.handleSearchSubmission()
+        this.defaultQueryForState()
 
     },
 
@@ -73,6 +74,10 @@ FPOC.INIT = {
             FPOC.INIT.setCurrentState(geography.id)
             FPOC.INIT.updateCurrentState()
             FPOC.INIT.updateStateControl()
+
+
+            $(document).trigger('displayDefaultQuery')
+
         });
 
 
@@ -97,49 +102,7 @@ FPOC.INIT = {
                             FPOC.INIT.setCurrentState(address.address_components[5].short_name)
                             FPOC.INIT.updateCurrentState()
                             FPOC.INIT.updateStateControl()
-
-                            $.ajax({
-                                url: "ajaxGetFDAData",
-                                method: 'post',
-                                data: {state:FPOC.INIT.getCurrentState(),status:'OnGoing'}
-                            }).done(function (data) {
-
-                                console.log("data from the call",data)
-
-
-                                tbody =$('#fdaData tbody')
-
-
-                                               $.each(data.results,function(index,value){
-
-                                                   tr = $('<tr>')
-                                                   $.each(value,function (index,value) {
-
-                                                    if (index ==='recalling_firm' || index ==='classification' || index =='@id' || index ==='product_description')
-
-                                                        var column = $('<td>')
-                                                        $(column).text(value)
-                                                       tr.append(column)
-                                                   })
-                                                   tbody.append(tr)
-
-
-
-                                               })
-
-
-                                                $('#fdaData').DataTable({
-                                                    "columnDefs": [
-                                                               {
-                                                                   "targets": [ 3 ],
-                                                                   "visible":false
-                                                               } ]
-
-                                                })
-
-
-                            });
-
+                            $(document).trigger('displayDefaultQuery')
                         }
 
                     }
@@ -175,6 +138,13 @@ FPOC.INIT = {
     getCurrentState: function () {
         return FPOC.STATE
     },
+    setCurrentData: function (e) {
+        FPOC.DATASET = e
+    },
+    getCurrentData: function (e) {
+        return FPOC.DATASET
+    },
+
     updateStateControl: function (e) {
         $('#state').val(FPOC.STATE)
     },
@@ -185,7 +155,7 @@ FPOC.INIT = {
             FPOC.INIT.revertCurrentState()
             FPOC.INIT.setCurrentState($(this).val())
             FPOC.INIT.updateCurrentState()
-
+            $(document).trigger('displayDefaultQuery')
 
         })
 
@@ -204,33 +174,123 @@ FPOC.INIT = {
 
                 console.log(data)
 
+                FPOC.INIT.createTable()
+
+                FPOC.INIT.createTable()
+                tbody = $('#fdaData tbody')
+                tbody.empty()
 
 
-                tbody =$('#fdaData tbody')
+                $.each(data.results, function (index, value) {
 
+                    tr = $('<tr>')
+                    $.each(value, function (index, value) {
 
-                $.each(data.results,function(index,value){
+                        if (index === 'recalling_firm' || index === 'classification' || index == '@id' || index === 'product_description')
 
-                    tr = tbody.append($('<tr>'))
-                    $.each(value,function (index,value) {
-
-
-                    console.log(index,value)
+                            var column = $('<td>')
+                        $(column).text(value)
+                        tr.append(column)
                     })
-
+                    tbody.append(tr)
 
 
                 })
 
 
-
-
-
+                FPOC.INIT.initTable()
 
 
             });
 
         })
+
+    },
+
+    createTable: function (e) {
+
+
+        tab = '<table id="fdaData" class="display" cellspacing="0" width="100%"><thead><tr><th>Product Description</th><th>Recalling Firm</th>' +
+            '<th>Classification</th><th>Id</th></tr></thead><tbody></tbody></table>'
+
+        $('#tblData').empty().append(tab)
+    },
+    defaultQueryForState: function (e) {
+
+
+        $(document).on('displayDefaultQuery', function () {
+
+            $.ajax({
+                url: "ajaxGetFDAData",
+                method: 'post',
+                data: {state: FPOC.INIT.getCurrentState(), status: 'OnGoing'}
+            }).done(function (data) {
+
+                console.log("data from the call", data)
+
+                FPOC.INIT.createTable()
+                tbody = $('#fdaData tbody')
+                FPOC.INIT.setCurrentData(data.results)
+
+                $.each(data.results, function (index, value) {
+
+                    tr = $('<tr>')
+                    $.each(value, function (index, value) {
+
+                        if (index === 'recalling_firm' || index === 'classification' || index == '@id' || index === 'product_description')
+
+                            var column = $('<td>')
+                        $(column).text(value)
+                        tr.append(column)
+                    })
+                    tbody.append(tr)
+
+
+                })
+
+                FPOC.INIT.initTable()
+
+
+            });
+
+
+        })
+
+
+    },
+    initTable: function (e) {
+
+
+        $('#fdaData').DataTable({
+            "columnDefs": [
+                {
+                    "targets": [ 3 ],
+                    "visible": false
+                }
+            ]
+
+        })
+
+        $('#fdaData tbody').on('click', 'tr', function () {
+
+
+            var table = $('#fdaData').DataTable();
+
+
+            if ($(this).hasClass('selected')) {
+                $(this).removeClass('selected');
+            }
+            else {
+                table.$('tr.selected').removeClass('selected');
+                $(this).addClass('selected');
+            }
+
+            console.log(table.row('.selected').data())
+
+            displayDetails(table.row('.selected').data()[3])
+        });
+    },
+    displayDetails:function(e){
 
     }
 };
