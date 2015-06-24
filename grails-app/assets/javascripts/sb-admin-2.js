@@ -96,8 +96,17 @@ FPOC.INIT = {
                         if (address.address_components.length >= 8) {
                             FPOC.INIT.setCurrentState(address.address_components[5].short_name)
                             FPOC.INIT.updateCurrentState()
-
                             FPOC.INIT.updateStateControl()
+
+                            $.ajax({
+                                url: "ajaxGetFDAData",
+                                method: 'post',
+                                data: {state:FPOC.INIT.getCurrentState(),status:'OnGoing'}
+                            }).done(function (data) {
+
+                                console.log("data from the call",data)
+
+                            });
 
                         }
 
@@ -140,7 +149,7 @@ FPOC.INIT = {
     initClickHandlerForState: function () {
 
         $('#state').on('change', function (e) {
-            console.log("currentState",$(this).val() )
+            console.log("currentState", $(this).val())
             FPOC.INIT.revertCurrentState()
             FPOC.INIT.setCurrentState($(this).val())
             FPOC.INIT.updateCurrentState()
@@ -150,9 +159,22 @@ FPOC.INIT = {
 
     },
 
-    handleSearchSubmission:function() {
+    handleSearchSubmission: function () {
 
-       $('#searchSubmit')
+        $('#searchSubmit').on('click', function (e) {
+
+
+            $.ajax({
+                url: "ajaxGetFDAData",
+                method: 'post',
+                data: $('#scopeForm').serialize()
+            }).done(function (data) {
+
+                console.log(data)
+
+            });
+
+        })
 
     }
 };

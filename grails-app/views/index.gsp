@@ -35,7 +35,7 @@
 
             <div class="row">
                 <div class="col-lg-6">
-                    <form class="form-horizontal" role="form" method="POST">
+                    <form class="form-horizontal" role="form" method="POST" id="scopeForm">
                         <div class="row">
                             <div class="col-sm-4" style="margin-top:10px">
                                 <div class="input-group"><span class="input-group-addon"
@@ -119,7 +119,7 @@
 
                             <div class="col-sm-1" style="margin-top:10px">
 
-                                <button type="button" class="btn btn-success">Submit</button>
+                                <button type="button" class="btn btn-success" id="searchSubmit">Submit</button>
                             </div>
                         </div>
                     </form>

@@ -12,8 +12,16 @@ class PocService {
 
         StringBuffer strBuffer = new StringBuffer()
 
+        if (!parameters.contains("search")) {
 
-        strBuffer << grailsApplication.config.grails.fda.apiURL << "/enforcement.json" << "?api_key=" << grailsApplication.config.grails.fda.apiKey << "&" << parameters << "&limit=" <<100
+            parameters = "search=" + parameters
+        } else {
+
+
+            parameters = parameters.replace("search:", "search=")
+        }
+
+        strBuffer << grailsApplication.config.grails.fda.apiURL << "/enforcement.json" << "?api_key=" << grailsApplication.config.grails.fda.apiKey << "&" << parameters << "&limit=" << 100
 
         println strBuffer
         strBuffer.toURL().text

@@ -16,7 +16,9 @@ class PocController {
         parameterMap.remove('controller')
         parameterMap.remove('format')
 
-        String searchString =parameterMap.collect{it}.join('+AND+')
+        String searchString =parameterMap.collect{it ->
+            it.key << ":" << it.value
+        }.join('+AND+')
 
         println "searchString |" + searchString
 
