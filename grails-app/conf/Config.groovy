@@ -102,7 +102,6 @@ grails.rest.injectInto = ["Controller", "Service"]
 
 rest.https.cert.hostnameVerifier='ALLOW_ALL'
 
-grails.war.destFile=ROOT.war
 
 // log4j configuration
 log4j.main = {
