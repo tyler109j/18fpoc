@@ -53,7 +53,8 @@
                             <div class="col-sm-4" style="margin-top:10px">
                                 <div class="input-group"><span class="input-group-addon" id="basic-addon2">Search</span>
 
-                                    <input type="text" class="form-control" aria-describedby="basic-addon1" id="search" name="search">
+                                    <input type="text" class="form-control" aria-describedby="basic-addon1" id="search"
+                                           name="search">
                                 </div>
                             </div>
 
@@ -138,7 +139,24 @@
                 </div>
 
                 <div class="col-lg-6 col-md-6">
-                    Data
+                    <table id="fdaData" class="display" cellspacing="0" width="100%">
+                        <thead>
+                        <tr>
+                            <th>Product Description</th>
+                            <th>Recalling Firm</th>
+                            <th>Classification</th>
+                            <th>Id</th>
+
+                        </tr>
+                        </thead>
+
+
+                        <tbody>
+
+                        </tbody>
+
+
+                    </table>
                 </div>
 
             </div>

@@ -106,6 +106,38 @@ FPOC.INIT = {
 
                                 console.log("data from the call",data)
 
+
+                                tbody =$('#fdaData tbody')
+
+
+                                               $.each(data.results,function(index,value){
+
+                                                   tr = $('<tr>')
+                                                   $.each(value,function (index,value) {
+
+                                                    if (index ==='recalling_firm' || index ==='classification' || index =='@id' || index ==='product_description')
+
+                                                        var column = $('<td>')
+                                                        $(column).text(value)
+                                                       tr.append(column)
+                                                   })
+                                                   tbody.append(tr)
+
+
+
+                                               })
+
+
+                                                $('#fdaData').DataTable({
+                                                    "columnDefs": [
+                                                               {
+                                                                   "targets": [ 3 ],
+                                                                   "visible":false
+                                                               } ]
+
+                                                })
+
+
                             });
 
                         }
@@ -171,6 +203,30 @@ FPOC.INIT = {
             }).done(function (data) {
 
                 console.log(data)
+
+
+
+                tbody =$('#fdaData tbody')
+
+
+                $.each(data.results,function(index,value){
+
+                    tr = tbody.append($('<tr>'))
+                    $.each(value,function (index,value) {
+
+
+                    console.log(index,value)
+                    })
+
+
+
+                })
+
+
+
+
+
+
 
             });
 
