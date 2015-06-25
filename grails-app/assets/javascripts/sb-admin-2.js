@@ -174,7 +174,26 @@ FPOC.INIT = {
 
                 console.log(data)
 
-                FPOC.INIT.createTable()
+
+                if (data.results === undefined) {
+
+                    FPOC.INIT.createTable()
+
+                    $('#fdaData').DataTable({
+                                "columnDefs": [
+                                    {
+                                        "targets": [ 3 ],
+                                        "visible": false
+                                    }
+                                ],language :{
+                                      "emptyTable": "No data available in table"
+                                    }
+
+                            })
+
+                    return
+                }
+
 
                 FPOC.INIT.createTable()
                 tbody = $('#fdaData tbody')
@@ -186,7 +205,7 @@ FPOC.INIT = {
                     tr = $('<tr>')
                     $.each(value, function (index, value) {
 
-                        if (index === 'recalling_firm' || index === 'classification' || index == '@id' || index === 'product_description')
+                        if (index === 'recalling_firm' || index === 'product_type' || index == '@id' || index === 'product_description')
 
                             var column = $('<td>')
                         $(column).text(value)
@@ -210,8 +229,8 @@ FPOC.INIT = {
     createTable: function (e) {
 
 
-        tab = '<table id="fdaData" class="display" cellspacing="0" width="100%"><thead><tr><th>Product Description</th><th>Recalling Firm</th>' +
-            '<th>Classification</th><th>Id</th></tr></thead><tbody></tbody></table>'
+        tab = '<table id="fdaData" class="display" cellspacing="0" width="100%"><thead><tr><th>Product Type</th><th>Product Description</th>' +
+            '<th>Recalling Firm</th><th>Id</th></tr></thead><tbody></tbody></table>'
 
         $('#tblData').empty().append(tab)
     },
@@ -220,11 +239,12 @@ FPOC.INIT = {
 
         $(document).on('displayDefaultQuery', function () {
 
-            $.ajax({
+           var jqxhr=  $.ajax({
                 url: "ajaxGetFDAData",
                 method: 'post',
                 data: {state: FPOC.INIT.getCurrentState(), status: 'OnGoing'}
-            }).done(function (data) {
+            })
+            jqxhr.done(function (data) {
 
                 console.log("data from the call", data)
 
@@ -237,7 +257,7 @@ FPOC.INIT = {
                     tr = $('<tr>')
                     $.each(value, function (index, value) {
 
-                        if (index === 'recalling_firm' || index === 'classification' || index == '@id' || index === 'product_description')
+                        if (index === 'recalling_firm' || index === 'product_type' || index == '@id' || index === 'product_description')
 
                             var column = $('<td>')
                         $(column).text(value)
@@ -251,7 +271,13 @@ FPOC.INIT = {
                 FPOC.INIT.initTable()
 
 
-            });
+            })
+            jqxhr.fail(function (data) {
+                FPOC.INIT.createTable()
+                               tbody = $('#fdaData tbody')
+
+                alert("No Data Matched the query")
+            })
 
 
         })
@@ -287,7 +313,7 @@ FPOC.INIT = {
 
             console.log(table.row('.selected').data())
 
-            displayDetails(table.row('.selected').data()[3])
+            FPOC.INIT.displayDetails(table.row('.selected').data()[3])
         });
     },
     displayDetails:function(e){
