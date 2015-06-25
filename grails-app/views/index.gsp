@@ -149,5 +149,54 @@
     <!-- /#page-wrapper -->
 
 </div>
+
+
+
+<div class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" id="gridSystemModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridSystemModalLabel">Recall Details</h4>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<script id="detailTemplate" type="x-tmpl-mustache">
+    <table>
+<tr>
+<td><h5>Recall Reason:</h5></td>
+<td>{{reason_for_recall}}
+</tr>
+<tr>
+<td><h5>Issue Date:</h5></td>
+<td>{{formattedDate}}
+</tr>
+<tr>
+<td><h5>Classification:</h5></td>
+<td>{{classification}}
+</tr>
+<tr>
+
+<td><h5>Recall Number:</h5></td>
+<td>{{recall_number}}
+</tr>
+<tr>
+<td><h5>Recalling Firm:<h5></td>
+<td>{{recalling_firm}}
+</tr>
+</table>
+</script>
 </body>
 </html>

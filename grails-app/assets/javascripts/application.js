@@ -10,6 +10,9 @@
 //= require metisMenu
 //= require_tree .
 //= require datamaps.world.min
+//= require jquery.mustache
+//= require mustache
+//= require moment
 
 
 

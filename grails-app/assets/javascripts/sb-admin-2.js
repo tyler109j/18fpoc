@@ -180,16 +180,16 @@ FPOC.INIT = {
                     FPOC.INIT.createTable()
 
                     $('#fdaData').DataTable({
-                                "columnDefs": [
-                                    {
-                                        "targets": [ 3 ],
-                                        "visible": false
-                                    }
-                                ],language :{
-                                      "emptyTable": "No data available in table"
-                                    }
+                        "columnDefs": [
+                            {
+                                "targets": [ 3 ],
+                                "visible": false
+                            }
+                        ], language: {
+                            "emptyTable": "No data available in table"
+                        }
 
-                            })
+                    })
 
                     return
                 }
@@ -239,7 +239,7 @@ FPOC.INIT = {
 
         $(document).on('displayDefaultQuery', function () {
 
-           var jqxhr=  $.ajax({
+            var jqxhr = $.ajax({
                 url: "ajaxGetFDAData",
                 method: 'post',
                 data: {state: FPOC.INIT.getCurrentState(), status: 'OnGoing'}
@@ -274,7 +274,7 @@ FPOC.INIT = {
             })
             jqxhr.fail(function (data) {
                 FPOC.INIT.createTable()
-                               tbody = $('#fdaData tbody')
+                tbody = $('#fdaData tbody')
 
                 alert("No Data Matched the query")
             })
@@ -316,9 +316,48 @@ FPOC.INIT = {
             FPOC.INIT.displayDetails(table.row('.selected').data()[3])
         });
     },
-    displayDetails:function(e){
+    displayDetails: function (e) {
+
+
+        data = FPOC.INIT.getCurrentData()
+
+        id = e
+
+        $.each(data, function (index, value) {
+
+            $.each(value, function (index, val) {
+
+                if (index == '@id' && val === e) {
+                    FPOC.INIT.displayModal(value)
+                    return
+
+
+                }
+
+            })
+
+        })
+
+
+    },
+    displayModal:function(data){
+
+
+        container = $('#gridSystemModal .container-fluid')
+
+
+        data.formattedDate = moment(data.recall_initiation_date,"YYYYMMDD").format("MM-DD-YYYY")
+
+        template = $('#detailTemplate').html()
+        returnString = Mustache.to_html(template, data);
+        console.log(returnString)
+        container.empty().html(returnString)
+
+        $('#gridSystemModal').modal('show')
+
 
     }
+
 };
 
 
