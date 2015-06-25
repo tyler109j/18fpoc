@@ -4,7 +4,7 @@ jdk:
 branches:
   only:
   - developer
-script: ./grailsw refresh-dependencies && ./grailsw "test-app unit:" && ./grailsw war ROOT.war
+script: ./grailsw refresh-dependencies && ./grailsw "test-app unit:" && ./grailsw war webapps/ROOT.war
 deploy:
   provider: openshift
   user: hsingh@iworkscorp.com

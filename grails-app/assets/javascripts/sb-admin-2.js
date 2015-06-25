@@ -186,7 +186,8 @@ FPOC.INIT = {
                                 "visible": false
                             }
                         ], language: {
-                            "emptyTable": "No data available in table"
+                            "emptyTable": "No data available in table",
+                            "search": 'Filter By:'
                         }
 
                     })
@@ -229,8 +230,8 @@ FPOC.INIT = {
     createTable: function (e) {
 
 
-        tab = '<table id="fdaData" class="display" cellspacing="0" width="100%"><thead><tr><th>Product Description</th><th>Recalling Firm</th>' +
-            '<th>Classification</th><th>Id</th></tr></thead><tbody></tbody></table>'
+        tab = '<table id="fdaData" class="stripe" cellspacing="0" width="100%"><thead><tr><th class="fdaColor">Product Description</th><th class="fdaColor">Recalling Firm</th>' +
+            '<th class="fdaColor">Classification</th><th>Id</th></tr></thead><tbody></tbody></table>'
 
         $('#tblData').empty().append(tab)
     },
@@ -274,9 +275,21 @@ FPOC.INIT = {
             })
             jqxhr.fail(function (data) {
                 FPOC.INIT.createTable()
-                tbody = $('#fdaData tbody')
 
-                alert("No Data Matched the query")
+                                    $('#fdaData').DataTable({
+                                        "columnDefs": [
+                                            {
+                                                "targets": [ 3 ],
+                                                "visible": false
+                                            }
+                                        ], language: {
+                                            "emptyTable": "No data available in table",
+                                            "search": 'Filter By:'
+                                        }
+
+                                    })
+
+                                    return
             })
 
 
@@ -293,7 +306,10 @@ FPOC.INIT = {
                     "targets": [ 3 ],
                     "visible": false
                 }
-            ]
+            ],language: {
+                                        "emptyTable": "No data available in table",
+                                        "search": 'Filter By:'
+                                    }
 
         })
 

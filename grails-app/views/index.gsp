@@ -8,32 +8,17 @@
 <body>
 <div id="wrapper">
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand navbar-inverse" href="index.html">18fPOC</a>
-        </div>
-        <!-- /.navbar-header -->
-
-    </nav>
 
     <!-- Page Content -->
     <div id="page-wrapper">
         <div class="container-fluid">
 
 
-            <div class="jumbotron" style="margin-bottom:5px; padding-bottom:5px;padding-top:5px">
-                <p><h2>FDA's Food Recall Geolocator.</h2> The purpose of this application is to alert the general public with various food recalls in each state. To view recalls in this application do so by clicking on the map or selecting a state from the drop down menu. As a default your state is automatically selected when you enter the application. If you want to filter your search more, select from the Recall Status drop down. As a default, it is automatically set to display "ongoing" recalls in the selected area.</p>
+            <div class="jumbotron" style="margin-bottom:5px; padding-bottom:5px;padding-top:5px; margin-top:10px;">
+                <p><h2 class="fdaColor">FDA's Food Recall Geolocator.</h2> The purpose of this application is to alert the general public with various food recalls in each state. To view recalls in this application do so by clicking on the map or selecting a state from the drop down menu. As a default your state is automatically selected when you enter the application. If you want to filter your search more, select from the Recall Status drop down. As a default, it is automatically set to display "ongoing" recalls in the selected area.</p>
                             </div>
             <div class="row">
-                <div class="col-lg-12">
-                </div>
+
                 <!-- /.col-lg-12 -->
             </div>
 
@@ -41,8 +26,8 @@
                 <div class="col-lg-6">
                     <form class="form-horizontal" role="form" method="POST" id="scopeForm">
                         <div class="row">
-                            <div class="col-sm-4" style="margin-top:10px">
-                                <div class="input-group"><span class="input-group-addon"
+                            <div class="cold-md-4 col-sm-4" style="margin-top:10px">
+                                <div class="input-group"><span class="input-group-addon fdaColor"
                                                                id="recallStatuslbcl">Recall Status</span>
 
                                     <select name="status" class="form-control">
@@ -55,7 +40,7 @@
                             </div>
 
                             <div class="col-sm-4" style="margin-top:10px">
-                                <div class="input-group"><span class="input-group-addon" id="basic-addon2">Search</span>
+                                <div class="input-group"><span class="input-group-addon fdaColor" id="basic-addon2">Search</span>
 
                                     <input type="text" class="form-control" aria-describedby="basic-addon1" id="search"
                                            name="search">
@@ -63,7 +48,7 @@
                             </div>
 
                             <div class="col-sm-3" style="margin-top:10px">
-                                <div class="input-group"><span class="input-group-addon" id="basic-addon3">State</span>
+                                <div class="input-group"><span class="input-group-addon fdaColor" id="basic-addon3">State</span>
 
                                     <select name="state" class="form-control" id="state">
                                         <option value="NA"></option>
@@ -137,15 +122,24 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 " style="position: relative;">
                     <div style=" position:relative;">
-                        <div id="map" style="height: 500px;">
+                        <div id="map" style="height: 100%;">
                         </div>
                     </div>
                     <div>
-                    <h3>Classification</h3>
+                    <h3><span class="fdaColor">Classification</span></h3>
 
-                        <p><strong>Class I:</strong>Dangerous or defective products that predictably could cause serious health problems or death. Examples include: food found to contain botulinum toxin, food with undeclared allergens, a label mix-up on a lifesaving drug, or a defective artificial heart valve.</p>
-                        <p><strong>Class II:</strong>Products that might cause a temporary health problem, or pose only a slight threat of a serious nature. Example: a drug that is under-strength but that is not used to treat life-threatening situations.</p>
-                        <p><strong>Class III:</strong>Products that are unlikely to cause any adverse health reaction, but that violate FDA labeling or manufacturing laws. Examples include: a minor container defect and lack of English labeling in a retail food.</p>
+                       <ul>
+                           <li>
+                               <strong class="fdaColor">Class I:</strong>Dangerous or defective products that predictably could cause serious health problems or death. Examples include: food found to contain botulinum toxin, food with undeclared allergens, a label mix-up on a lifesaving drug, or a defective artificial heart valve.</p>
+                           </li>
+                           <li>
+                               <strong class="fdaColor">Class II:</strong>Products that might cause a temporary health problem, or pose only a slight threat of a serious nature. Example: a drug that is under-strength but that is not used to treat life-threatening situations.</p>
+
+                           </li>
+
+                           <li><strong class="fdaColor">Class III:</strong>Products that are unlikely to cause any adverse health reaction, but that violate FDA labeling or manufacturing laws. Examples include: a minor container defect and lack of English labeling in a retail food.</li>
+
+                       </ul>
 
                     </div>
                 </div>

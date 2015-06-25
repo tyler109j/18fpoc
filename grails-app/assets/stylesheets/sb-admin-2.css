@@ -334,5 +334,12 @@ table.dataTable thead .sorting_desc_disabled {
 }
 
 #fdaData tbody tr {
-    cursor:pointer;
+    cursor:pointer
+}
+
+.fdaColor {
+   color:#2994ff
+}
+.dataTables_paginate {
+    color:#2994ff
 }
