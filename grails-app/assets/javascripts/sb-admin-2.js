@@ -205,7 +205,7 @@ FPOC.INIT = {
                     tr = $('<tr>')
                     $.each(value, function (index, value) {
 
-                        if (index === 'recalling_firm' || index === 'product_type' || index == '@id' || index === 'product_description')
+                        if (index === 'recalling_firm' || index === 'classification' || index == '@id' || index === 'product_description')
 
                             var column = $('<td>')
                         $(column).text(value)
@@ -229,8 +229,8 @@ FPOC.INIT = {
     createTable: function (e) {
 
 
-        tab = '<table id="fdaData" class="display" cellspacing="0" width="100%"><thead><tr><th>Product Type</th><th>Product Description</th>' +
-            '<th>Recalling Firm</th><th>Id</th></tr></thead><tbody></tbody></table>'
+        tab = '<table id="fdaData" class="display" cellspacing="0" width="100%"><thead><tr><th>Product Description</th><th>Recalling Firm</th>' +
+            '<th>Classification</th><th>Id</th></tr></thead><tbody></tbody></table>'
 
         $('#tblData').empty().append(tab)
     },
@@ -257,7 +257,7 @@ FPOC.INIT = {
                     tr = $('<tr>')
                     $.each(value, function (index, value) {
 
-                        if (index === 'recalling_firm' || index === 'product_type' || index == '@id' || index === 'product_description')
+                        if (index === 'recalling_firm' || index === 'classification' || index == '@id' || index === 'product_description')
 
                             var column = $('<td>')
                         $(column).text(value)
