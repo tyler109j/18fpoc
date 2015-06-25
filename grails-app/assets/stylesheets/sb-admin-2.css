@@ -232,7 +232,6 @@ table.dataTable thead .sorting_asc,
 table.dataTable thead .sorting_desc,
 table.dataTable thead .sorting_asc_disabled,
 table.dataTable thead .sorting_desc_disabled {
-    background: 0 0;
 }
 
 
@@ -343,3 +342,14 @@ table.dataTable thead .sorting_desc_disabled {
 .dataTables_paginate {
     color:#2994ff
 }
+
+.modal-header{
+
+ border-bottom:hidden !important;
+}
+.modal-footer{
+
+ border-top:hidden !important;
+}
+
+

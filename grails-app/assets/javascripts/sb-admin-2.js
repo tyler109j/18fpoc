@@ -48,7 +48,8 @@ FPOC.INIT = {
             scope: 'usa',
             responsive: true,
             geographyConfig: {
-                highlightOnHover: false
+                highlightOnHover: false,
+                borderColor: 'orange'
             },
             element: document.getElementById('map'),
             done: function (datamap) {
@@ -115,7 +116,7 @@ FPOC.INIT = {
         var colors = d3.scale.category10();
         console.log("CurrentState", FPOC.INIT.getCurrentState())
         data = {}
-        data[FPOC.INIT.getCurrentState()] = colors(Math.random() * 100)
+        data[FPOC.INIT.getCurrentState()] = 'yellow'
 
         map.updateChoropleth(data)
 
@@ -230,7 +231,7 @@ FPOC.INIT = {
     createTable: function (e) {
 
 
-        tab = '<table id="fdaData" class="stripe" cellspacing="0" width="100%"><thead><tr><th class="fdaColor">Product Description</th><th class="fdaColor">Recalling Firm</th>' +
+        tab = '<table id="fdaData" class="display" cellspacing="0" width="100%"><thead><tr><th>Product Description</th><th class="fdaColor">Recalling Firm</th>' +
             '<th class="fdaColor">Classification</th><th>Id</th></tr></thead><tbody></tbody></table>'
 
         $('#tblData').empty().append(tab)
@@ -249,8 +250,31 @@ FPOC.INIT = {
 
                 console.log("data from the call", data)
 
-                FPOC.INIT.createTable()
-                tbody = $('#fdaData tbody')
+
+                if (data.results === undefined) {
+
+                    FPOC.INIT.createTable()
+
+                    $('#fdaData').DataTable({
+                        "columnDefs": [
+                            {
+                                "targets": [ 3 ],
+                                "visible": false
+                            }
+                        ], language: {
+                            "emptyTable": "No data available in table",
+                            "search": 'Filter By:'
+                        }
+
+                    })
+
+                    return
+                } else {
+                    FPOC.INIT.createTable()
+                    tbody = $('#fdaData tbody')
+                }
+
+
                 FPOC.INIT.setCurrentData(data.results)
 
                 $.each(data.results, function (index, value) {
@@ -276,20 +300,20 @@ FPOC.INIT = {
             jqxhr.fail(function (data) {
                 FPOC.INIT.createTable()
 
-                                    $('#fdaData').DataTable({
-                                        "columnDefs": [
-                                            {
-                                                "targets": [ 3 ],
-                                                "visible": false
-                                            }
-                                        ], language: {
-                                            "emptyTable": "No data available in table",
-                                            "search": 'Filter By:'
-                                        }
+                $('#fdaData').DataTable({
+                    "columnDefs": [
+                        {
+                            "targets": [ 3 ],
+                            "visible": false
+                        }
+                    ], language: {
+                        "emptyTable": "No data available in table",
+                        "search": 'Filter By:'
+                    }
 
-                                    })
+                })
 
-                                    return
+                return
             })
 
 
@@ -306,10 +330,10 @@ FPOC.INIT = {
                     "targets": [ 3 ],
                     "visible": false
                 }
-            ],language: {
-                                        "emptyTable": "No data available in table",
-                                        "search": 'Filter By:'
-                                    }
+            ], language: {
+                "emptyTable": "No data available in table",
+                "search": 'Filter By:'
+            }
 
         })
 
@@ -356,13 +380,13 @@ FPOC.INIT = {
 
 
     },
-    displayModal:function(data){
+    displayModal: function (data) {
 
 
         container = $('#gridSystemModal .container-fluid')
 
 
-        data.formattedDate = moment(data.recall_initiation_date,"YYYYMMDD").format("MM-DD-YYYY")
+        data.formattedDate = moment(data.recall_initiation_date, "YYYYMMDD").format("MM-DD-YYYY")
 
         template = $('#detailTemplate').html()
         returnString = Mustache.to_html(template, data);

@@ -14,9 +14,25 @@
         <div class="container-fluid">
 
 
-            <div class="jumbotron" style="margin-bottom:5px; padding-bottom:5px;padding-top:5px; margin-top:10px;">
-                <p><h2 class="fdaColor">FDA's Food Recall Geolocator.</h2> The purpose of this application is to alert the general public with various food recalls in each state. To view recalls in this application do so by clicking on the map or selecting a state from the drop down menu. As a default your state is automatically selected when you enter the application. If you want to filter your search more, select from the Recall Status drop down. As a default, it is automatically set to display "ongoing" recalls in the selected area.</p>
-                            </div>
+            <div style="margin-bottom:5px; padding-bottom:5px;padding-top:5px; margin-top:10px;">
+                <table class="table">
+                <tr>
+                <td style="background-color:#489aee">
+                    <p><h2 style="color:#ffffff">FDA Food Recall Geolocator</h2></p>
+                </td>
+                <td style="background-color: #5da9f6;color:white;">
+
+                    <h5>Welcome</h5>
+
+                 <p style="font-size:16px">You have entered our interactive webpage that displays various Food Recalls in each state. This site was created in part of an open source project headed by <a  style="color:white" href="http://open.fda.gov">open.fda.gov</a>
+                    Our mission is to provide the general public an interactive way to find food recalls in each state! How do you navigate the page? Just simply click on the map and the table will filter based on your search criteria. Want to learn more about a particular recall?
+                    Click on the row and a recall details window will pop up.
+                 </p> 
+                </td>
+                </tr>
+                </table>
+
+           </div>
             <div class="row">
 
                 <!-- /.col-lg-12 -->
@@ -126,18 +142,33 @@
                         </div>
                     </div>
                     <div>
-                    <h3><span class="fdaColor">Classification</span></h3>
+                    <h3><span class="fdaColor">Reading Your Results </span></h3>
+
+
 
                        <ul>
                            <li>
-                               <strong class="fdaColor">Class I:</strong>Dangerous or defective products that predictably could cause serious health problems or death. Examples include: food found to contain botulinum toxin, food with undeclared allergens, a label mix-up on a lifesaving drug, or a defective artificial heart valve.</p>
+                               <p>
+                                                          <strong class="fdaColor">Production Description:</strong> Is a brief description of the product being recalled issued by the recalling firm
+                                                      </p>
+
+
+
                            </li>
                            <li>
-                               <strong class="fdaColor">Class II:</strong>Products that might cause a temporary health problem, or pose only a slight threat of a serious nature. Example: a drug that is under-strength but that is not used to treat life-threatening situations.</p>
+                               <p>
+                                                                                                             <strong class="fdaColor">Recalling Firm:</strong> Is a brief description of the product being recalled issued by the recalling firm
+                                                                                                         </p>
+                           </li>
+                           <li>
+                               <strong class="fdaColor">Class I: </strong>Dangerous or defective products that predictably could cause serious health problems or death. Examples include: food found to contain botulinum toxin, food with undeclared allergens, a label mix-up on a lifesaving drug, or a defective artificial heart valve.</p>
+                           </li>
+                           <li>
+                               <strong class="fdaColor">Class II: </strong>Products that might cause a temporary health problem, or pose only a slight threat of a serious nature. Example: a drug that is under-strength but that is not used to treat life-threatening situations.</p>
 
                            </li>
 
-                           <li><strong class="fdaColor">Class III:</strong>Products that are unlikely to cause any adverse health reaction, but that violate FDA labeling or manufacturing laws. Examples include: a minor container defect and lack of English labeling in a retail food.</li>
+                           <li><strong class="fdaColor">Class III: </strong>Products that are unlikely to cause any adverse health reaction, but that violate FDA labeling or manufacturing laws. Examples include: a minor container defect and lack of English labeling in a retail food.</li>
 
                        </ul>
 
@@ -158,14 +189,18 @@
 
 </div>
 
-
+<footer class="footer">
+      <div class="container">
+        <p class="text-muted">This website uses data provided by <a href="http://open.fda.gov">open.fda.gov</a></p>
+      </div>
+    </footer>
 
 <div class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" id="gridSystemModal">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="gridSystemModalLabel">Recall Details</h4>
+        <h4 class="modal-title fdaColor" id="gridSystemModalLabel">Recall Details</h4>
       </div>
       <div class="modal-body">
         <div class="container-fluid">
@@ -182,26 +217,22 @@
 
 
 <script id="detailTemplate" type="x-tmpl-mustache">
-    <table>
+    <table class="table table-striped">
 <tr>
-<td><h5>Recall Reason:</h5></td>
+<td><strong class="fdaColor">Recall Reason:</strong></td>
 <td>{{reason_for_recall}}
 </tr>
 <tr>
-<td><h5>Issue Date:</h5></td>
+<td><strong class="fdaColor">Issue Date:</strong></td>
 <td>{{formattedDate}}
 </tr>
 <tr>
-<td><h5>Classification:</h5></td>
-<td>{{classification}}
-</tr>
-<tr>
 
-<td><h5>Recall Number:</h5></td>
+<td><strong class="fdaColor">Recall Number:</strong></td>
 <td>{{recall_number}}
 </tr>
 <tr>
-<td><h5>Recalling Firm:<h5></td>
+<td><strong class="fdaColor">Recalling Firm:</strong></td>
 <td>{{recalling_firm}}
 </tr>
 </table>
