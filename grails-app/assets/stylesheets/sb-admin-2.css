@@ -353,3 +353,23 @@ table.dataTable thead .sorting_desc_disabled {
 }
 
 
+.footer {
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  background-color: #5da9f6;
+  color:white;
+}
+
+#map {
+    height: 50%;
+    width:100%
+    margin: 0 auto;
+}
+
+
+.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate {
+    color: #2994ff;
+}
+
+
