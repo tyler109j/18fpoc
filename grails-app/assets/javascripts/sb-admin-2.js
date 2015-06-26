@@ -71,6 +71,8 @@ FPOC.INIT = {
         dataMap.svg.selectAll('.datamaps-subunit').on('click', function (geography) {
             console.log(geography);
 
+            $('#scopeForm') [0].reset()
+
             FPOC.INIT.revertCurrentState()
             FPOC.INIT.setCurrentState(geography.id)
             FPOC.INIT.updateCurrentState()
@@ -95,7 +97,6 @@ FPOC.INIT = {
 
             $.getJSON('https://maps.googleapis.com/maps/api/geocode/json',
                 {latlng: position.coords.latitude + "," + position.coords.longitude}, function (results) {
-
                     if (results.status === "OK") {
                         address = results.results[0]
                         console.log(address)
@@ -151,7 +152,10 @@ FPOC.INIT = {
     },
     initClickHandlerForState: function () {
 
+
         $('#state').on('change', function (e) {
+
+
             console.log("currentState", $(this).val())
             FPOC.INIT.revertCurrentState()
             FPOC.INIT.setCurrentState($(this).val())
@@ -231,7 +235,7 @@ FPOC.INIT = {
     createTable: function (e) {
 
 
-        tab = '<table id="fdaData" class="display" cellspacing="0" width="100%"><thead><tr><th>Product Description</th><th class="fdaColor">Recalling Firm</th>' +
+        tab = '<table id="fdaData" class="display" cellspacing="0" width="100%"><thead><tr><th class="fdaColor">Product Description</th><th class="fdaColor">Recalling Firm</th>' +
             '<th class="fdaColor">Classification</th><th>Id</th></tr></thead><tbody></tbody></table>'
 
         $('#tblData').empty().append(tab)
@@ -402,7 +406,20 @@ FPOC.INIT = {
 
 
 $(function () {
+    var spinner
+
+    $(document).on("ajaxStart", function (e, xhr, settings, exception) {
+            spinner = new Spinner().spin(document.getElementById('map'));
+            });
+            $(document).on("ajaxStop", function (e, xhr, settings, exception) {
+                spinner.stop()
+            });
 
     FPOC.INIT.init()
+
+
+
+
+
 
 });

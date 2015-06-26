@@ -13,6 +13,7 @@
 //= require jquery.mustache
 //= require mustache
 //= require moment
+//= require spin
 
 
 

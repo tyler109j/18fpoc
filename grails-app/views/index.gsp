@@ -25,7 +25,7 @@
 
 
 
-                    <h5>Welcome!</h5>
+                    <h3>Welcome!</h3>
                     <p>You have entered a webpage created as a working design prototype using datasets from <a href="https://open.fda.gov" style="color:white;">open.fda.gov.</a>
                     <p>
                     If you are interested in what foods have been, maybe or currently recalled, use this page to access that data provided by the FDA.
@@ -161,7 +161,7 @@
                        <ul>
                            <li>
                                <p>
-                                                          <strong class="fdaColor">Production Description:</strong> Is a brief description of the product being recalled issued by the recalling firm
+                                                          <strong class="fdaColor">Production Description:</strong> Is a brief description of the product being recalled issued by the recalling firm.
                                                       </p>
 
 
@@ -169,7 +169,7 @@
                            </li>
                            <li>
                                <p>
-                                                                                                             <strong class="fdaColor">Recalling Firm:</strong> Is a brief description of the product being recalled issued by the recalling firm
+                                                                                                             <strong class="fdaColor">Recalling Firm:</strong> The firm that initiates a recall or, in the case of an FDA requested recall or FDA mandated recall, the firm that has primary responsibility for the manufacture and (or) marketing of the product to be recalled.
                                                                                                          </p>
                            </li>
                            <li>
