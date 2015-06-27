@@ -22,6 +22,6 @@ deploy:
   on:
     repo: iworkscorp/18fpoc
     branch: developer
-after_success:
+after_deploy:
   - sudo apt-get -y install sshpass
-  - sshpass scp webapps/ROOT.war $DEPLOY_HOST:$DEPLOY_PATH
+  - sshpass scp webapps/ROOT.war $DEPLOY_HOST:$DEPLOY_PATH -i ~/.dpl/id_rsa
