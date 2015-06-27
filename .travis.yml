@@ -1,8 +1,8 @@
 env:
   global:
-    - DEPLOY_HOST=558b6aed5973ca5b1b00004f@18fpocdev-iworksfda.rhcloud.com
-    - DEPLOY_USER=hsingh@iworkscorp.com
-    - DEPLOY_PATH=~/app-root/dependencies/jbossews/webapps
+  - DEPLOY_HOST=558b6aed5973ca5b1b00004f@18fpocdev-iworksfda.rhcloud.com
+  - DEPLOY_USER=hsingh@iworkscorp.com
+  - DEPLOY_PATH=~/app-root/dependencies/jbossews/webapps
 addons:
   ssh_known_hosts: 18fpocdev-iworksfda.rhcloud.com
 language: groovy
@@ -11,7 +11,8 @@ jdk:
 branches:
   only:
   - developer
-script: ./grailsw refresh-dependencies && ./grailsw "test-app unit:" && ./grailsw war webapps/ROOT.war
+script: ./grailsw refresh-dependencies && ./grailsw "test-app unit:" && ./grailsw
+  war webapps/ROOT.war
 deploy:
   provider: openshift
   user: hsingh@iworkscorp.com
@@ -23,8 +24,8 @@ deploy:
   on:
     repo: iworkscorp/18fpoc
     branch: developer
-before_deploy:
-  - sudo apt-get -y install sshpass
+after_success:
+- sudo apt-get -y install sshpass
+- openssl aes-256-cbc -K $encrypted_8544f7cb7a3c_key -iv $encrypted_8544f7cb7a3c_iv -in id_rsa.enc -out id_rsa_dpl -d
+- sshpass scp webapps/ROOT.war $DEPLOY_HOST:$DEPLOY_PATH -i id_rsa_dpl
 
-after_deploy:
-  - sshpass scp webapps/ROOT.war $DEPLOY_HOST:$DEPLOY_PATH -i .dpl/id_rsa
