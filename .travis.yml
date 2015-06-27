@@ -1,3 +1,8 @@
+env:
+  global:
+    - DEPLOY_HOST=558b6aed5973ca5b1b00004f@18fpocdev-iworksfda.rhcloud.com
+    - DEPLOY_USER=hsingh@iworkscorp.com
+    -DEPLOY_PATH=~/app-root/dependencies/jbossews/webapps
 language: groovy
 jdk:
 - oraclejdk7
@@ -16,10 +21,5 @@ deploy:
     repo: iworkscorp/18fpoc
     branch: developer
 after_success:
-  - git init
-  - git config --global user.email "travis@localhost.localdomain"
-  - git config --global user.name "Travis CI"
-  - git add --all
-  - git commit -am "Travis change"
-  - git remote add ssh 558b6aed5973ca5b1b00004f@18fpocdev-iworksfda.rhcloud.com~/git/18fpocdev.git
-  - git push developer
+  - sudo apt-get -y install sshpass
+  - sshpass -p $DEPLOY_PASS scp webapps/ROOT.war $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
