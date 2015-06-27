@@ -22,4 +22,4 @@ deploy:
     branch: developer
 after_success:
   - sudo apt-get -y install sshpass
-  - sshpass -p $DEPLOY_PASS scp webapps/ROOT.war $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
+  - sshpass scp webapps/ROOT.war $DEPLOY_HOST:$DEPLOY_PATH
