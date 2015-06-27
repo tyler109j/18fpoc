@@ -2,7 +2,7 @@ env:
   global:
   - DEPLOY_HOST=558b6aed5973ca5b1b00004f@18fpocdev-iworksfda.rhcloud.com
   - DEPLOY_USER=hsingh@iworkscorp.com
-  - DEPLOY_PATH=~/app-root/dependencies/jbossews/webapps
+  - DEPLOY_PATH=app-root/dependencies/jbossews/webapps
 addons:
   ssh_known_hosts: 18fpocdev-iworksfda.rhcloud.com
 language: groovy
