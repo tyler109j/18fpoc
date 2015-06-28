@@ -22,6 +22,7 @@ Testing
 - iterative approach; feedback informed subsequent work or versions of the prototype
 - Provided sufficient documentation to install and run on another machine
 - Prototype and underlying platforms used are openly licensed and free of charge
-- 
+
+
 Build
  To build this app, clone the project and after you clone, please run the command ./grailsw war. This will create a war file in the target folder which you can deploy to a any servelet container like tomcat, jetty or netty.
