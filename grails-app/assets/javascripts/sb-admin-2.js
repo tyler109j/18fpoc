@@ -272,15 +272,17 @@ FPOC.INIT = {
                 }
             },
 
+            legend: {
+               enabled:false
+            },
 
             series: [
                 {
                     data: data,
                     mapData: Highcharts.maps['countries/us/us-all'],
                     joinBy: ['postal-code', 'code'],
-                    name: 'US Map',
                     cursor: 'pointer',
-                    allowPointSelect: true,
+                    allowPointSelect: false,
                     point: {
                         events: {
                             click: function (e) {
@@ -304,18 +306,11 @@ FPOC.INIT = {
                             }
                         }
                     },
+                    name:'US Map',
                     tooltip: {
                         headerFormat: '',
                         pointFormat: '{point.name}'
                     }
-                },
-                {
-                    name: 'Separators',
-                    type: 'mapline',
-                    data: Highcharts.geojson(Highcharts.maps['countries/us/us-all'], 'mapline'),
-                    color: 'white',
-                    showInLegend: false,
-                    enableMouseTracking: false
                 }
             ]
         }).highcharts();
