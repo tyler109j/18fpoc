@@ -749,7 +749,7 @@ $(function () {
     var spinner
 
     $(document).on("ajaxStart", function (e, xhr, settings, exception) {
-        spinner = new Spinner().spin(document.getElementById('map'));
+        spinner = new Spinner().spin(document.getElementById('wrapper'));
     });
     $(document).on("ajaxStop", function (e, xhr, settings, exception) {
         spinner.stop()
