@@ -31,3 +31,5 @@ after_success:
 - chmod 600  ~/id_rsa_dpl
 - sshpass scp -i ~/id_rsa_dpl webapps/ROOT.war $DEPLOY_HOST:$DEPLOY_PATH
 
+
+
