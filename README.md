@@ -24,5 +24,5 @@ Testing
 - Prototype and underlying platforms used are openly licensed and free of charge
 
 
-Build
+# Build
  To build this app, clone the project and after you clone, please run the command ./grailsw war. This will create a war file in the target folder which you can deploy to a any servelet container like tomcat, jetty or netty.
