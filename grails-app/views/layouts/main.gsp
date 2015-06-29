@@ -28,6 +28,12 @@
 
     <asset:javascript src="application.js"/>
     <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+
+
+    <script src="http://code.highcharts.com/maps/highmaps.js"></script>
+    <script src="http://code.highcharts.com/maps/modules/data.js"></script>
+
+      <script src="http://code.highcharts.com/mapdata/countries/us/us-all.js"></script>
     <g:layoutHead/>
 </head>
 

@@ -14,6 +14,7 @@ FPOC.INIT = {
         this.handleSearchSubmission()
         this.defaultQueryForState()
 
+
     },
 
     initWindow: function () {
@@ -35,7 +36,7 @@ FPOC.INIT = {
                 $("#page-wrapper").css("min-height", (height) + "px");
             }
             if (map !== undefined) {
-                map.resize()
+                //map.resize()
             }
 
         })
@@ -44,51 +45,364 @@ FPOC.INIT = {
 
     initMap: function () {
 
-        map = new Datamap({
-            scope: 'usa',
-            responsive: true,
-            geographyConfig: {
-                highlightOnHover: false,
-                borderColor: 'orange'
+
+        var data = [
+            {
+                "value": 438,
+                "code": "nj"
             },
-            element: document.getElementById('map'),
-            done: function (datamap) {
-
-
-                FPOC.INIT.handleMapClick(datamap)
-
+            {
+                "value": 387.35,
+                "code": "ri"
+            },
+            {
+                "value": 312.68,
+                "code": "ma"
+            },
+            {
+                "value": 271.4,
+                "code": "ct"
+            },
+            {
+                "value": 209.23,
+                "code": "md"
+            },
+            {
+                "value": 195.18,
+                "code": "ny"
+            },
+            {
+                "value": 154.87,
+                "code": "de"
+            },
+            {
+                "value": 114.43,
+                "code": "fl"
+            },
+            {
+                "value": 107.05,
+                "code": "oh"
+            },
+            {
+                "value": 105.8,
+                "code": "pa"
+            },
+            {
+                "value": 86.27,
+                "code": "il"
+            },
+            {
+                "value": 83.85,
+                "code": "ca"
+            },
+            {
+                "value": 72.83,
+                "code": "hi"
+            },
+            {
+                "value": 69.03,
+                "code": "va"
+            },
+            {
+                "value": 67.55,
+                "code": "mi"
+            },
+            {
+                "value": 65.46,
+                "code": "in"
+            },
+            {
+                "value": 63.8,
+                "code": "nc"
+            },
+            {
+                "value": 54.59,
+                "code": "ga"
+            },
+            {
+                "value": 53.29,
+                "code": "tn"
+            },
+            {
+                "value": 53.2,
+                "code": "nh"
+            },
+            {
+                "value": 51.45,
+                "code": "sc"
+            },
+            {
+                "value": 39.61,
+                "code": "la"
+            },
+            {
+                "value": 39.28,
+                "code": "ky"
+            },
+            {
+                "value": 38.13,
+                "code": "wi"
+            },
+            {
+                "value": 34.2,
+                "code": "wa"
+            },
+            {
+                "value": 33.84,
+                "code": "al"
+            },
+            {
+                "value": 31.36,
+                "code": "mo"
+            },
+            {
+                "value": 30.75,
+                "code": "tx"
+            },
+            {
+                "value": 29,
+                "code": "wv"
+            },
+            {
+                "value": 25.41,
+                "code": "vt"
+            },
+            {
+                "value": 23.86,
+                "code": "mn"
+            },
+            {
+                "value": 23.42,
+                "code": "ms"
+            },
+            {
+                "value": 20.22,
+                "code": "ia"
+            },
+            {
+                "value": 19.82,
+                "code": "ar"
+            },
+            {
+                "value": 19.4,
+                "code": "ok"
+            },
+            {
+                "value": 17.43,
+                "code": "az"
+            },
+            {
+                "value": 16.01,
+                "code": "co"
+            },
+            {
+                "value": 15.95,
+                "code": "me"
+            },
+            {
+                "value": 13.76,
+                "code": "or"
+            },
+            {
+                "value": 12.69,
+                "code": "ks"
+            },
+            {
+                "value": 10.5,
+                "code": "ut"
+            },
+            {
+                "value": 8.6,
+                "code": "ne"
+            },
+            {
+                "value": 7.03,
+                "code": "nv"
+            },
+            {
+                "value": 6.04,
+                "code": "id"
+            },
+            {
+                "value": 5.79,
+                "code": "nm"
+            },
+            {
+                "value": 3.84,
+                "code": "sd"
+            },
+            {
+                "value": 3.59,
+                "code": "nd"
+            },
+            {
+                "value": 2.39,
+                "code": "mt"
+            },
+            {
+                "value": 1.96,
+                "code": "wy"
+            },
+            {
+                "value": 0.42,
+                "code": "ak"
             }
+        ];
 
-        })
 
-        map.labels()
+        $.each(data, function (i, v) {
+            this.value = this.code
+            this.code = this.code.toUpperCase()
+        });
+
+        // Initiate the chart
+        map = $('#map').highcharts('Map', {
+            credits: {
+                enabled: false
+            },
+            title: {
+                text: ''
+            },
+
+            mapNavigation: {
+                enabled: false,
+                enableDoubleClickZoomTo: true,
+                buttonOptions: {
+                    verticalAlign: 'bottom'
+                }
+            },
+
+
+            series: [
+                {
+                    data: data,
+                    mapData: Highcharts.maps['countries/us/us-all'],
+                    joinBy: ['postal-code', 'code'],
+                    name: 'US Map',
+                    cursor: 'pointer',
+                    allowPointSelect: true,
+                    point: {
+                        events: {
+                            click: function (e) {
+                                console.log('Category: ', e.currentTarget.options);
+                                FPOC.INIT.handleMapClick(e.currentTarget.options)
+                            }
+                        }
+                    },
+                    states: {
+                        select: {
+                            color: '#a4edba',
+                            borderColor: 'black',
+                            dashStyle: 'shortdot'
+                        }
+                    },
+                    dataLabels: {
+                        enabled: true,
+                        formatter: function () {
+                            if (this.point.value) {
+                                return this.point.code;
+                            }
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '',
+                        pointFormat: '{point.name}'
+                    }
+                },
+                {
+                    name: 'Separators',
+                    type: 'mapline',
+                    data: Highcharts.geojson(Highcharts.maps['countries/us/us-all'], 'mapline'),
+                    color: 'white',
+                    showInLegend: false,
+                    enableMouseTracking: false
+                }
+            ]
+        }).highcharts();
+
+
+        var utils = {};
+        // Could create a utility function to do this
+        utils.inArray = function (searchFor, property) {
+            var retVal = -1;
+            var self = this;
+            for (var index = 0; index < self.length; index++) {
+                var item = self[index];
+                if (item.hasOwnProperty(property)) {
+                    if (item[property].toLowerCase() === searchFor.toLowerCase()) {
+                        retVal = index;
+                        return retVal;
+                    }
+                }
+            }
+            ;
+            return retVal;
+        };
+
+
+        Array.prototype.inArray = utils.inArray;
+
+        console.log(map.series[0].data)
+
 
     },
 
 
     handleMapClick: function (dataMap) {
 
-        dataMap.svg.selectAll('.datamaps-subunit').on('click', function (geography) {
-            console.log(geography);
+        /*dataMap.svg.selectAll('.datamaps-subunit').on('click', function (geography) {
+         console.log(geography);
 
-            $('#scopeForm') [0].reset()
+         $('#scopeForm') [0].reset()
 
-            FPOC.INIT.revertCurrentState()
-            FPOC.INIT.setCurrentState(geography.id)
-            FPOC.INIT.updateCurrentState()
-            FPOC.INIT.updateStateControl()
+         FPOC.INIT.revertCurrentState()
+         FPOC.INIT.setCurrentState(geography.id)
+         FPOC.INIT.updateCurrentState()
+         FPOC.INIT.updateStateControl()
 
 
-            $(document).trigger('displayDefaultQuery')
+         $(document).trigger('displayDefaultQuery')
 
-        });
+         });*/
+
+
+        $('#scopeForm') [0].reset()
+
+        FPOC.INIT.setCurrentState(dataMap.value.toUpperCase())
+        FPOC.INIT.updateCurrentState()
+        FPOC.INIT.updateStateControl()
+
+
+        $(document).trigger('displayDefaultQuery')
 
 
     },
     getGeoLocation: function () {
 
         if (navigator.geolocation) {
-            console.log("CP", navigator.geolocation.getCurrentPosition(getCoords))
+            console.log("CP", navigator.geolocation.getCurrentPosition(getCoords, handleErrors))
+
+            function handleErrors(error) {
+
+                switch (error.code) {
+                    case error.PERMISSION_DENIED:
+                        alert("user did not share geolocation data");
+                        break;
+
+                    case error.POSITION_UNAVAILABLE:
+                        alert("could not detect current position");
+                        break;
+
+                    case error.TIMEOUT:
+                        alert("retrieving position timed out");
+                        break;
+
+                    default:
+                        alert("unknown error");
+                        break;
+                }
+
+            }
         }
 
         function getCoords(position) {
@@ -105,6 +419,12 @@ FPOC.INIT = {
                             FPOC.INIT.updateCurrentState()
                             FPOC.INIT.updateStateControl()
                             $(document).trigger('displayDefaultQuery')
+
+                            index = map.series[0].data.inArray(FPOC.INIT.getCurrentState(), "code")
+                            console.log("selectIndex", index)
+                            if (index > 0) {
+                                map.series[0].data[index].select()
+                            }
                         }
 
                     }
@@ -119,7 +439,8 @@ FPOC.INIT = {
         data = {}
         data[FPOC.INIT.getCurrentState()] = 'yellow'
 
-        map.updateChoropleth(data)
+        //map.updateChoropleth(data)
+
 
     },
 
@@ -129,7 +450,7 @@ FPOC.INIT = {
         data = {}
         data[FPOC.INIT.getCurrentState()] = '#abdda4'
 
-        map.updateChoropleth(data)
+        //map.updateChoropleth(data)
 
     },
 
@@ -161,6 +482,7 @@ FPOC.INIT = {
             FPOC.INIT.setCurrentState($(this).val())
             FPOC.INIT.updateCurrentState()
             $(document).trigger('displayDefaultQuery')
+
 
         })
 
@@ -198,6 +520,15 @@ FPOC.INIT = {
                     })
 
                     return
+                }
+
+
+                index = map.series[0].data.inArray(FPOC.INIT.getCurrentState(), "code")
+                console.log("selectIndex", index)
+                if (index > 0) {
+                    if (map.series[0].data[index].selected === false || map.series[0].data[index].selected === undefined) {
+                        map.series[0].data[index].select()
+                    }
                 }
 
 
@@ -253,6 +584,15 @@ FPOC.INIT = {
             jqxhr.done(function (data) {
 
                 console.log("data from the call", data)
+
+
+                index = map.series[0].data.inArray(FPOC.INIT.getCurrentState(), "code")
+                console.log("selectIndex", index)
+                if (index > 0) {
+                    if (map.series[0].data[index].selected === false || map.series[0].data[index].selected === undefined) {
+                        map.series[0].data[index].select()
+                    }
+                }
 
 
                 if (data.results === undefined) {
@@ -409,17 +749,13 @@ $(function () {
     var spinner
 
     $(document).on("ajaxStart", function (e, xhr, settings, exception) {
-            spinner = new Spinner().spin(document.getElementById('map'));
-            });
-            $(document).on("ajaxStop", function (e, xhr, settings, exception) {
-                spinner.stop()
-            });
+        spinner = new Spinner().spin(document.getElementById('map'));
+    });
+    $(document).on("ajaxStop", function (e, xhr, settings, exception) {
+        spinner.stop()
+    });
 
     FPOC.INIT.init()
-
-
-
-
 
 
 });
