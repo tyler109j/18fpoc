@@ -1,6 +1,5 @@
 env:
   global:
-  - DEPLOY_HOST=558b6aed5973ca5b1b00004f@18fpocdev-iworksfda.rhcloud.com
   - DEPLOY_USER=hsingh@iworkscorp.com
   - DEPLOY_PATH=app-root/dependencies/jbossews/webapps
 addons:
@@ -11,7 +10,9 @@ jdk:
 branches:
   only:
   - developer
-script: ./grailsw refresh-dependencies && ./grailsw "test-app unit:" && ./grailsw
+script:
+- ./18fpoc-copy.sh
+- ./grailsw refresh-dependencies && ./grailsw "test-app unit:" && ./grailsw
   war webapps/ROOT.war
 deploy:
   provider: openshift
@@ -29,11 +30,6 @@ after_success:
 - openssl aes-256-cbc -K $encrypted_8544f7cb7a3c_key -iv $encrypted_8544f7cb7a3c_iv
     -in id_rsa.enc -out ~/id_rsa_dpl -d
 - chmod 600  ~/id_rsa_dpl
-- chmod ugo+x 18fpoc-copy.sh
-- if [ "${TRAVIS_BRANCH}" = "master" ]; then
-      export DEPLOY_HOST=558aaeb2500446c6d300019c@18fpoc-iworksfda.rhcloud.com
-  fi
-
-  sshpass scp -i ~/id_rsa_dpl webapps/ROOT.war $DEPLOY_HOST:$DEPLOY_PATH
+- sshpass scp -i ~/id_rsa_dpl webapps/ROOT.war $DEPLOY_HOST:$DEPLOY_PATH
 
 
