@@ -1,5 +1,6 @@
 env:
   global:
+  - DEPLOY_HOST=558b6aed5973ca5b1b00004f@18fpocdev-iworksfda.rhcloud.com
   - DEPLOY_USER=hsingh@iworkscorp.com
   - DEPLOY_PATH=app-root/dependencies/jbossews/webapps
 addons:
@@ -10,6 +11,7 @@ jdk:
 branches:
   only:
   - developer
+  - master
 script:
 - ./18fpoc-copy.sh
 - ./grailsw refresh-dependencies && ./grailsw "test-app unit:" && ./grailsw
@@ -19,17 +21,22 @@ deploy:
   user: hsingh@iworkscorp.com
   password:
     secure: PpsxfZVmxLTQCLe+TcoUJB6PSj9E2YtybbC44wbnVt2UhCniajdZ0khgFBBr7Q88NTjZAY44gr0eW6UsSPL5w7/s40lo7McW+YFM52BuTFlyFuSXuSTGrtn55yPOE1mYmPFT/mK3oVZf+zvNQQidHUR5YPte5zgzK3Z5/HJYi2W4LMLOid5uolIpK4HdTMpHGhgerHqnpeDrJ7qyMckHw6i1+vkaQnNTKguzRSK2BqHzfCaZ5cZvP0lTmW2+SKa56q2MM0kV+P9fkB50m6HEM77vzMwzlrvlhsKC/u8QhgrBuxegYAzpMnbAGN4hI9KZho34o0pDfdb7fS17RUxjbB0D+7DjFWH+dksWx+jRkGEuyKi8DMTnbO6rVfFOmxFYaPJ1SUiOYteDi4DKQf2X02pnaoFj/rOztW7ZXHurCrZcWjGEBatpEuJVsyIupM+Yk2RIhuKpF+kHDRNUW8nuWL8b09/MMs3HJWBReK92HoFd3/dK4V+1S+W+pg7P2U0McpENHU8/yCQvc2SsKVdp9Bsv3z0HTYaixsUGpqwp5p4RfanNT3aaLqu68Ekk+8eEVovEmxUd9U+kIj+e2PC3QCFbE/nFTtezpChTs5Oqie9suRpx5TmBfjyoI8G7K5XUo4wm/P7wW7564CLqGRjPzcGkJF8QpaFQBofMIY+Hfd4=
-  app: 18fpocdev
+  app:
+    developer: 18fpocdev
+    master: 18fpoc
   domain: iworksfda
   skip_cleanup: true
   on:
-    repo: iworkscorp/18fpoc
-    branch: developer
+    all_branches: true
 after_success:
 - sudo apt-get -y install sshpass
 - openssl aes-256-cbc -K $encrypted_8544f7cb7a3c_key -iv $encrypted_8544f7cb7a3c_iv
     -in id_rsa.enc -out ~/id_rsa_dpl -d
 - chmod 600  ~/id_rsa_dpl
+- chmod ugo+x 18fpoc-copy.sh
+- if [ "${TRAVIS_BRANCH}" = "master" ]; then
+    DEPLOY_HOST=558aaeb2500446c6d300019c@18fpoc-iworksfda.rhcloud.com
+  fi
 - sshpass scp -i ~/id_rsa_dpl webapps/ROOT.war $DEPLOY_HOST:$DEPLOY_PATH
 
 
