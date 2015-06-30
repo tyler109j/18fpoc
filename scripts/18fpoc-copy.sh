@@ -1,7 +1,7 @@
-#!bin/bash
+#!/bin/bash
 set -ev
 
-if ["${TRAVIS_BRANCH}" = "master"]; then
+if [ "${TRAVIS_BRANCH}" = "master" ]; then
     export DEPLOY_HOST=558aaeb2500446c6d300019c@18fpoc-iworksfda.rhcloud.com
 fi
 
