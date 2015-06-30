@@ -16,5 +16,7 @@ class PocControllerSpec extends Specification {
     }
 
     void "test something"() {
+
+        given: "test given"
     }
 }
