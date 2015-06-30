@@ -12,23 +12,13 @@ class PocController {
 
         def parameterMap = params
 
-        parameterMap.remove('action')
-        parameterMap.remove('controller')
-        parameterMap.remove('format')
+        String searchString = Utils.createQueryString(parameterMap)
 
-        if (parameterMap?.search?.isEmpty()){
-            parameterMap.remove("search")
-        }
+        log.debug "searchString |" + searchString
 
-        String searchString =parameterMap.collect{it ->
-            it.key << ":" << it.value
-        }.join('+AND+')
+        def returnData = pocService.queryFDA(searchString)
 
-        println "searchString |" + searchString
-
-         def returnData = pocService.queryFDA(searchString)
-
-        render contentType:'application/json',text:returnData
+        render contentType: 'application/json', text: returnData
 
     }
 }

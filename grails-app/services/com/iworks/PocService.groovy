@@ -23,7 +23,7 @@ class PocService {
 
         strBuffer << grailsApplication.config.grails.fda.apiURL << "/enforcement.json" << "?api_key=" << grailsApplication.config.grails.fda.apiKey << "&" << parameters << "&limit=" << 100
 
-        println strBuffer
+        log.debug "reurndata" + strBuffer
         def returnString
         try {
             returnString = strBuffer.toURL()?.text
