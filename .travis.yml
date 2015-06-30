@@ -29,7 +29,6 @@ after_success:
 - openssl aes-256-cbc -K $encrypted_8544f7cb7a3c_key -iv $encrypted_8544f7cb7a3c_iv
     -in id_rsa.enc -out ~/id_rsa_dpl -d
 - chmod 600  ~/id_rsa_dpl
-- sshpass scp -i ~/id_rsa_dpl webapps/ROOT.war $DEPLOY_HOST:$DEPLOY_PATH
-
+- ./scripts/18poc-copy.sh
 
 
