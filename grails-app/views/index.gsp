@@ -1,122 +1,257 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta name="layout" content="main"/>
-		<title>Welcome to Grails</title>
-		<style type="text/css" media="screen">
-			#status {
-				background-color: #eee;
-				border: .2em solid #fff;
-				margin: 2em 2em 1em;
-				padding: 1em;
-				width: 12em;
-				float: left;
-				-moz-box-shadow: 0px 0px 1.25em #ccc;
-				-webkit-box-shadow: 0px 0px 1.25em #ccc;
-				box-shadow: 0px 0px 1.25em #ccc;
-				-moz-border-radius: 0.6em;
-				-webkit-border-radius: 0.6em;
-				border-radius: 0.6em;
-			}
+<head>
+    <meta name="layout" content="main"/>
+    <title>18fpoc</title>
+</head>
 
-			.ie6 #status {
-				display: inline; /* float double margin fix http://www.positioniseverything.net/explorer/doubled-margin.html */
-			}
+<body>
+<div id="wrapper">
 
-			#status ul {
-				font-size: 0.9em;
-				list-style-type: none;
-				margin-bottom: 0.6em;
-				padding: 0;
-			}
+    <!-- Page Content -->
+    <div id="page-wrapper">
+        <div class="container-fluid">
 
-			#status li {
-				line-height: 1.3;
-			}
+            <div style="margin-bottom:5px; padding-bottom:5px;padding-top:5px; margin-top:10px;">
+                <table class="table">
+                    <tr>
+                        <td style="background-color:#489aee">
+                            <p>
 
-			#status h1 {
-				text-transform: uppercase;
-				font-size: 1.1em;
-				margin: 0 0 0.3em;
-			}
+                            <h2 style="color:#ffffff">Food Recall Locator</h2></p>
+                        </td>
+                        <td style="background-color: #5da9f6;color:white;">
 
-			#page-body {
-				margin: 2em 1em 1.25em 18em;
-			}
+                            <h3>Welcome!</h3>
 
-			h2 {
-				margin-top: 1em;
-				margin-bottom: 0.3em;
-				font-size: 1em;
-			}
+                            <p>You have entered a webpage created as a working design prototype using datasets from <a
+                                    href="https://open.fda.gov" style="color:white;">open.fda.gov.</a>
 
-			p {
-				line-height: 1.5;
-				margin: 0.25em 0;
-			}
+                            <p>
+                                If you are interested in what foods have been, maybe or currently recalled, use this page to access that data provided by the FDA.
+                                To see food recalls in a state: Select a state from the dropdown and click submit or click a state on the map.
+                                To see a specific food, product or product type recalls: Enter the name in the search, click Submit.
+                                The results are displayed in the table.
+                                To sort your results: Click on the headings to sort the columns.
+                                To get recall details: Click on the  list of results row to see the recall details.
+                                To filter your results: Type the text you want the results to be filtered by.
+                            </p>
+                        </p>
 
-			#controller-list ul {
-				list-style-position: inside;
-			}
+                        </td>
+                    </tr>
+                </table>
 
-			#controller-list li {
-				line-height: 1.3;
-				list-style-position: inside;
-				margin: 0.25em 0;
-			}
+            </div>
 
-			@media screen and (max-width: 480px) {
-				#status {
-					display: none;
-				}
+            <div class="row">
 
-				#page-body {
-					margin: 0 1em 1em;
-				}
+                <div style="padding-bottom: 10px;">
+                    <form class="form-horizontal" role="form" method="POST" id="scopeForm">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-4" style="margin-top:10px">
+                                <div class="input-group"><span class="input-group-addon fdaColor"
+                                                               id="recallStatuslbcl">Recall Status</span>
 
-				#page-body h1 {
-					margin-top: 0;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div id="status" role="complementary">
-			<h1>Application Status</h1>
-			<ul>
-				<li>App version: <g:meta name="app.version"/></li>
-				<li>Grails version: <g:meta name="app.grails.version"/></li>
-				<li>Groovy version: ${GroovySystem.getVersion()}</li>
-				<li>JVM version: ${System.getProperty('java.version')}</li>
-				<li>Reloading active: ${grails.util.Environment.reloadingAgentEnabled}</li>
-				<li>Controllers: ${grailsApplication.controllerClasses.size()}</li>
-				<li>Domains: ${grailsApplication.domainClasses.size()}</li>
-				<li>Services: ${grailsApplication.serviceClasses.size()}</li>
-				<li>Tag Libraries: ${grailsApplication.tagLibClasses.size()}</li>
-			</ul>
-			<h1>Installed Plugins</h1>
-			<ul>
-				<g:each var="plugin" in="${applicationContext.getBean('pluginManager').allPlugins}">
-					<li>${plugin.name} - ${plugin.version}</li>
-				</g:each>
-			</ul>
-		</div>
-		<div id="page-body" role="main">
-			<h1>Welcome to Grails</h1>
-			<p>Congratulations, you have successfully started your first Grails application! At the moment
-			   this is the default page, feel free to modify it to either redirect to a controller or display whatever
-			   content you may choose. Below is a list of controllers that are currently deployed in this application,
-			   click on each to execute its default action:</p>
+                                    <select name="status" class="form-control">
+                                        <option value="COMP">Completed</option>
+                                        <option value="Terminated">Terminated</option>
+                                        <option value="Pending">Pending</option>
+                                        <option value="OnGoing" selected="true">On-Going</option>
+                                    </select>
+                                </div>
+                            </div>
 
-			<div id="controller-list" role="navigation">
-				<h2>Available Controllers:</h2>
-				<ul>
-					<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
-						<li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
-					</g:each>
-				</ul>
-			</div>
-		</div>
-	</body>
+                            <div class="col-sm-4" style="margin-top:10px">
+                                <div class="input-group"><span class="input-group-addon fdaColor"
+                                                               id="basic-addon2">Search</span>
+
+                                    <input type="text" class="form-control" aria-describedby="basic-addon1" id="search"
+                                           name="search">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3" style="margin-top:10px">
+                                <div class="input-group"><span class="input-group-addon fdaColor"
+                                                               id="basic-addon3">State</span>
+
+                                    <select name="state" class="form-control" id="state">
+                                        <option value="NA"></option>
+                                        <option value="AL">AL</option>
+                                        <option value="AK">AK</option>
+                                        <option value="AZ">AZ</option>
+                                        <option value="AR">AR</option>
+                                        <option value="CA">CA</option>
+                                        <option value="CO">CO</option>
+                                        <option value="CT">CT</option>
+                                        <option value="DE">DE</option>
+                                        <option value="DC">DC</option>
+                                        <option value="FL">FL</option>
+                                        <option value="GA">GA</option>
+                                        <option value="HI">HI</option>
+                                        <option value="ID">ID</option>
+                                        <option value="IL">IL</option>
+                                        <option value="IN">IN</option>
+                                        <option value="IA">IA</option>
+                                        <option value="KS">KS</option>
+                                        <option value="KY">KY</option>
+                                        <option value="LA">LA</option>
+                                        <option value="ME">ME</option>
+                                        <option value="MD">MD</option>
+                                        <option value="MA">MA</option>
+                                        <option value="MI">MI</option>
+                                        <option value="MN">MN</option>
+                                        <option value="MS">MS</option>
+                                        <option value="MO">MO</option>
+                                        <option value="MT">MT</option>
+                                        <option value="NE">NE</option>
+                                        <option value="NV">NV</option>
+                                        <option value="NH">NH</option>
+                                        <option value="NJ">NJ</option>
+                                        <option value="NM">NM</option>
+                                        <option value="NY">NY</option>
+                                        <option value="NC">NC</option>
+                                        <option value="ND">ND</option>
+                                        <option value="OH">OH</option>
+                                        <option value="OK">OK</option>
+                                        <option value="OR">OR</option>
+                                        <option value="PA">PA</option>
+                                        <option value="RI">RI</option>
+                                        <option value="SC">SC</option>
+                                        <option value="SD">SD</option>
+                                        <option value="TN">TN</option>
+                                        <option value="TX">TX</option>
+                                        <option value="UT">UT</option>
+                                        <option value="VT">VT</option>
+                                        <option value="VA">VA</option>
+                                        <option value="WA">WA</option>
+                                        <option value="WV">WV</option>
+                                        <option value="WI">WI</option>
+                                        <option value="WY">WY</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-1" style="margin-top:10px">
+
+                                <button type="button" class="btn btn-success" id="searchSubmit">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-lg-offset-6 col-lg-6"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6 col-md-6 " style="position: relative;">
+                    <div>
+                        <div id="map" style="height: 500px; min-width: 310px; max-width: 600px; margin: 0 auto">
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3><span class="fdaColor">Reading Your Results</span></h3>
+
+
+
+                        <ul>
+                            <li>
+                                <p>
+                                    <strong class="fdaColor">Production Description:</strong> Is a brief description of the product being recalled issued by the recalling firm.
+                                </p>
+
+                            </li>
+                            <li>
+                                <p>
+                                    <strong class="fdaColor">Recalling Firm:</strong> The firm that initiates a recall or, in the case of an FDA requested recall or FDA mandated recall, the firm that has primary responsibility for the manufacture and (or) marketing of the product to be recalled.
+                                </p>
+                            </li>
+                            <li>
+                                <strong class="fdaColor">Class I:</strong>Dangerous or defective products that predictably could cause serious health problems or death. Examples include: food found to contain botulinum toxin, food with undeclared allergens, a label mix-up on a lifesaving drug, or a defective artificial heart valve.</p>
+                            </li>
+                            <li>
+                                <strong class="fdaColor">Class II:</strong>Products that might cause a temporary health problem, or pose only a slight threat of a serious nature. Example: a drug that is under-strength but that is not used to treat life-threatening situations.</p>
+
+                            </li>
+
+                            <li><strong
+                                    class="fdaColor">Class III:</strong>Products that are unlikely to cause any adverse health reaction, but that violate FDA labeling or manufacturing laws. Examples include: a minor container defect and lack of English labeling in a retail food.
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6" id="tblData">
+                </div>
+
+            </div>
+
+
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+    <!-- /#page-wrapper -->
+
+</div>
+
+
+<div class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" id="gridSystemModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title fdaColor" id="gridSystemModalLabel">Recall Details</h4>
+            </div>
+
+            <div class="modal-body">
+                <div class="container-fluid">
+
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<script id="detailTemplate" type="x-tmpl-mustache">
+    <table class="table table-striped">
+<tr>
+<td><strong class="fdaColor">Recall Reason:</strong></td>
+<td>{{reason_for_recall}}
+</tr>
+<tr>
+<td><strong class="fdaColor">Issue Date:</strong></td>
+<td>{{formattedDate}}
+</tr>
+<tr>
+
+<td><strong class="fdaColor">Recall Number:</strong></td>
+<td>{{recall_number}}
+</tr>
+<tr>
+<td><strong class="fdaColor">Recalling Firm:</strong></td>
+<td>{{recalling_firm}}
+</tr>
+</table>
+</script>
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted" style="color:white; margin-left: 25%">This website uses data provided by <a
+                style="color:white" href="http://open.fda.gov">open.fda.gov.</a></p>
+    </div>
+</footer>
+</body>
 </html>

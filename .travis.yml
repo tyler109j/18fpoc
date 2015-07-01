@@ -1,0 +1,28 @@
+env:
+  global:
+  - DEPLOY_USER=hsingh@iworkscorp.com
+  - DEPLOY_PATH=app-root/dependencies/jbossews/webapps
+  - DEPLOY_HOST=558b6aed5973ca5b1b00004f@18fpocdev-iworksfda.rhcloud.com
+  - DEPLOY_HOST_MASTER=558aaeb2500446c6d300019c@18fpoc-iworksfda.rhcloud.com
+addons:
+  ssh_known_hosts:
+  - 18fpocdev-iworksfda.rhcloud.com
+  - 18fpoc-iworksfda.rhcloud.com
+language: groovy
+jdk:
+- oraclejdk7
+branches:
+  only:
+  - developer
+  - master
+script:
+- ./18fpoc-copy.sh
+- ./grailsw refresh-dependencies && ./grailsw test-app && ./grailsw war webapps/ROOT.war
+after_success:
+- sudo apt-get -y install sshpass
+- openssl aes-256-cbc -K $encrypted_8544f7cb7a3c_key -iv $encrypted_8544f7cb7a3c_iv
+    -in id_rsa.enc -out ~/id_rsa_dpl -d
+- chmod 600  ~/id_rsa_dpl
+- chmod ugo+x 18fpoc-copy.sh
+- if [ "${TRAVIS_BRANCH}" = "developer" ]; then sshpass scp -i ~/id_rsa_dpl webapps/ROOT.war $DEPLOY_HOST:$DEPLOY_PATH; else sshpass scp -i ~/id_rsa_dpl webapps/ROOT.war $DEPLOY_HOST_MASTER:$DEPLOY_PATH; fi;
+

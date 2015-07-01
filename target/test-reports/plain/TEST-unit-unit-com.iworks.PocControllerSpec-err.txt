@@ -1,0 +1,6 @@
+--Output from testSearchStringWithStatusSearchStateParameters--
+--Output from testSearchStringWithStatusSearchNullStateParameters--
+--Output from testSearchStringWithStatusSearchBlankStateParameters--
+--Output from testSearchStringWithStatusNoSearchStateParameters--
+--Output from testSearchStringWithBlankStatusNoSearchStateParameters--
+--Output from testSearchStringWithNoStatusNoSearchStateParameters--

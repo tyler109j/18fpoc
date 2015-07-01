@@ -1,0 +1,31 @@
+Testsuite: com.iworks.PocControllerSpec
+Tests run: 6, Failures: 0, Errors: 0, Time elapsed: 7.511 sec
+------------- Standard Output ---------------
+--Output from testSearchStringWithStatusSearchStateParameters--
+searchString |status:ongoing+AND+search:milk+AND+state:ny
+--Output from testSearchStringWithStatusSearchNullStateParameters--
+searchString |status:ongoing+AND+state:ny
+--Output from testSearchStringWithStatusSearchBlankStateParameters--
+searchString |status:ongoing+AND+state:ny
+--Output from testSearchStringWithStatusNoSearchStateParameters--
+searchString |status:ongoing+AND+state:ny
+--Output from testSearchStringWithBlankStatusNoSearchStateParameters--
+searchString |status:+AND+state:ny
+--Output from testSearchStringWithNoStatusNoSearchStateParameters--
+searchString |state:ny
+------------- ---------------- ---------------
+------------- Standard Error -----------------
+--Output from testSearchStringWithStatusSearchStateParameters--
+--Output from testSearchStringWithStatusSearchNullStateParameters--
+--Output from testSearchStringWithStatusSearchBlankStateParameters--
+--Output from testSearchStringWithStatusNoSearchStateParameters--
+--Output from testSearchStringWithBlankStatusNoSearchStateParameters--
+--Output from testSearchStringWithNoStatusNoSearchStateParameters--
+------------- ---------------- ---------------
+
+Testcase: testSearchStringWithStatusSearchStateParameters took 7.281 sec
+Testcase: testSearchStringWithStatusSearchNullStateParameters took 0.029 sec
+Testcase: testSearchStringWithStatusSearchBlankStateParameters took 0.011 sec
+Testcase: testSearchStringWithStatusNoSearchStateParameters took 0.01 sec
+Testcase: testSearchStringWithBlankStatusNoSearchStateParameters took 0.01 sec
+Testcase: testSearchStringWithNoStatusNoSearchStateParameters took 0.01 sec

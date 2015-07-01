@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="Harjits-MacBook-Pro-2.local" name="com.iworks.PocServiceSpec" tests="3" time="1.066" timestamp="2015-07-01T17:59:41">
+  <properties />
+  <testcase classname="com.iworks.PocServiceSpec" name="testOneResult" time="0.914" />
+  <testcase classname="com.iworks.PocServiceSpec" name="testResultsAreNotEmpty" time="0.049" />
+  <testcase classname="com.iworks.PocServiceSpec" name="testZeroResults" time="0.084" />
+  <system-out><![CDATA[--Output from testOneResult--
+--Output from testResultsAreNotEmpty--
+--Output from testZeroResults--
+]]></system-out>
+  <system-err><![CDATA[--Output from testOneResult--
+--Output from testResultsAreNotEmpty--
+--Output from testZeroResults--
+]]></system-err>
+</testsuite>

@@ -1,0 +1,16 @@
+Testsuite: com.iworks.PocServiceSpec
+Tests run: 3, Failures: 0, Errors: 0, Time elapsed: 1.066 sec
+------------- Standard Output ---------------
+--Output from testOneResult--
+--Output from testResultsAreNotEmpty--
+--Output from testZeroResults--
+------------- ---------------- ---------------
+------------- Standard Error -----------------
+--Output from testOneResult--
+--Output from testResultsAreNotEmpty--
+--Output from testZeroResults--
+------------- ---------------- ---------------
+
+Testcase: testOneResult took 0.914 sec
+Testcase: testResultsAreNotEmpty took 0.049 sec
+Testcase: testZeroResults took 0.084 sec

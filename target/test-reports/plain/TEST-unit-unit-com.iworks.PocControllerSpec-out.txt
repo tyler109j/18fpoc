@@ -1,0 +1,12 @@
+--Output from testSearchStringWithStatusSearchStateParameters--
+searchString |status:ongoing+AND+search:milk+AND+state:ny
+--Output from testSearchStringWithStatusSearchNullStateParameters--
+searchString |status:ongoing+AND+state:ny
+--Output from testSearchStringWithStatusSearchBlankStateParameters--
+searchString |status:ongoing+AND+state:ny
+--Output from testSearchStringWithStatusNoSearchStateParameters--
+searchString |status:ongoing+AND+state:ny
+--Output from testSearchStringWithBlankStatusNoSearchStateParameters--
+searchString |status:+AND+state:ny
+--Output from testSearchStringWithNoStatusNoSearchStateParameters--
+searchString |state:ny
