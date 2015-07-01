@@ -2,6 +2,8 @@ env:
   global:
   - DEPLOY_USER=hsingh@iworkscorp.com
   - DEPLOY_PATH=app-root/dependencies/jbossews/webapps
+  - DEPLOY_HOST=558b6aed5973ca5b1b00004f@18fpocdev-iworksfda.rhcloud.com
+  - DEPLOY_HOST_MASTER=558aaeb2500446c6d300019c@18fpoc-iworksfda.rhcloud.com
 addons:
   ssh_known_hosts: 18fpocdev-iworksfda.rhcloud.com
 language: groovy
@@ -21,10 +23,9 @@ after_success:
 - chmod 600  ~/id_rsa_dpl
 - chmod ugo+x 18fpoc-copy.sh
 - if [ "${TRAVIS_BRANCH}" = "developer" ]; then
-    DEPLOY_HOST=558b6aed5973ca5b1b00004f@18fpocdev-iworksfda.rhcloud.com
-    export DEPLOY_HOST
+     sshpass scp -i ~/id_rsa_dpl webapps/ROOT.war $DEPLOY_HOST:$DEPLOY_PATH
+  else
+    sshpass scp -i ~/id_rsa_dpl webapps/ROOT.war $DEPLOY_HOST_MASTER:$DEPLOY_PATH
   fi
-- echo $DEPLOY_HOST
-- sshpass scp -i ~/id_rsa_dpl webapps/ROOT.war $DEPLOY_HOST:$DEPLOY_PATH
 
 
