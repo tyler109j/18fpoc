@@ -33,7 +33,7 @@ ENV PATH $GRAILS_HOME/bin:$PATH
 
 # Create App Directory
 
-COPY ./app
+COPY . /app
 WORKDIR /app
 
 

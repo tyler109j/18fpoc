@@ -1,0 +1,10 @@
+Testsuite: com.works.PocIntegrationTransactionIntegrationSpec
+Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 0.176 sec
+------------- Standard Output ---------------
+--Output from testIntegrationOfControlAndServiceForOneRecordResult--
+------------- ---------------- ---------------
+------------- Standard Error -----------------
+--Output from testIntegrationOfControlAndServiceForOneRecordResult--
+------------- ---------------- ---------------
+
+Testcase: testIntegrationOfControlAndServiceForOneRecordResult took 0.175 sec

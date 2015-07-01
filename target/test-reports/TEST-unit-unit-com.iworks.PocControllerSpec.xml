@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="Harjits-MacBook-Pro-2.local" name="com.iworks.PocControllerSpec" tests="6" time="7.511" timestamp="2015-07-01T17:59:33">
+  <properties />
+  <testcase classname="com.iworks.PocControllerSpec" name="testSearchStringWithStatusSearchStateParameters" time="7.28" />
+  <testcase classname="com.iworks.PocControllerSpec" name="testSearchStringWithStatusSearchNullStateParameters" time="0.029" />
+  <testcase classname="com.iworks.PocControllerSpec" name="testSearchStringWithStatusSearchBlankStateParameters" time="0.011" />
+  <testcase classname="com.iworks.PocControllerSpec" name="testSearchStringWithStatusNoSearchStateParameters" time="0.01" />
+  <testcase classname="com.iworks.PocControllerSpec" name="testSearchStringWithBlankStatusNoSearchStateParameters" time="0.01" />
+  <testcase classname="com.iworks.PocControllerSpec" name="testSearchStringWithNoStatusNoSearchStateParameters" time="0.01" />
+  <system-out><![CDATA[--Output from testSearchStringWithStatusSearchStateParameters--
+searchString |status:ongoing+AND+search:milk+AND+state:ny
+--Output from testSearchStringWithStatusSearchNullStateParameters--
+searchString |status:ongoing+AND+state:ny
+--Output from testSearchStringWithStatusSearchBlankStateParameters--
+searchString |status:ongoing+AND+state:ny
+--Output from testSearchStringWithStatusNoSearchStateParameters--
+searchString |status:ongoing+AND+state:ny
+--Output from testSearchStringWithBlankStatusNoSearchStateParameters--
+searchString |status:+AND+state:ny
+--Output from testSearchStringWithNoStatusNoSearchStateParameters--
+searchString |state:ny
+]]></system-out>
+  <system-err><![CDATA[--Output from testSearchStringWithStatusSearchStateParameters--
+--Output from testSearchStringWithStatusSearchNullStateParameters--
+--Output from testSearchStringWithStatusSearchBlankStateParameters--
+--Output from testSearchStringWithStatusNoSearchStateParameters--
+--Output from testSearchStringWithBlankStatusNoSearchStateParameters--
+--Output from testSearchStringWithNoStatusNoSearchStateParameters--
+]]></system-err>
+</testsuite>
