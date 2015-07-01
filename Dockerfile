@@ -32,7 +32,8 @@ ENV GRAILS_HOME /usr/lib/jvm/grails
 ENV PATH $GRAILS_HOME/bin:$PATH
 
 # Create App Directory
-WORKDIR /
+
+COPY ./app
 WORKDIR /app
 
 
