@@ -5,7 +5,9 @@ env:
   - DEPLOY_HOST=558b6aed5973ca5b1b00004f@18fpocdev-iworksfda.rhcloud.com
   - DEPLOY_HOST_MASTER=558aaeb2500446c6d300019c@18fpoc-iworksfda.rhcloud.com
 addons:
-  ssh_known_hosts: 18fpocdev-iworksfda.rhcloud.com
+  ssh_known_hosts:
+  - 18fpocdev-iworksfda.rhcloud.com
+  - 18fpoc-iworksfda.rhcloud.com
 language: groovy
 jdk:
 - oraclejdk7
