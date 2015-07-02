@@ -1,4 +1,4 @@
-# Build
+# Build Instructions
  To build this app, clone the project and after you clone, please run the command ./grailsw war. This will create a war file in the target folder which you can deploy to a any servelet container like tomcat, jetty or netty.
 
 To use the virtualized container run the command in the project directory
