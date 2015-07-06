@@ -13,7 +13,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-## Groovy - 
+## Groovy - Apache 2.0 license:
 Copyright (c) 2003-2015, the Groovy project
 
 Licensed under the Apache License, Version 2.0 (the "License");
