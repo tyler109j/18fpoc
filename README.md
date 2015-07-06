@@ -25,6 +25,7 @@ OpenShift, a platform powered by Red Hat and is FedRAMP Certified on ARC-P, was 
 ### Closing:
 
 After establishing the infrastructure of our system, a second sprint was initiated to conduct usability tests. During these tests our business analyst, usability tester , and frontend/backend web developer met on a frequent basis to test the system, provide feedback, and resolve any existing defects.
+
 It was iWorks’ goal to create a web application that would help connect the general public with information in regards to recalls from the FDA. Our goal was accomplished by developing a more human-centered prototype on how to display recall information from the FDA. By enabling the user to click on a state or submit a keyword search, we hope the government can use this application to display recalls in an easy to interpret format.  
 
 
