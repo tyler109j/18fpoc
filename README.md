@@ -20,7 +20,7 @@ Groovy was chosen for the programming language due to its seamless integration w
 
 During development of our application, we used the Open FDA REST API and created attributes to receive responses within the web application. Travis CI was used for testing the system and deploying the code due to the seamless integration it has with GitHub (*refer to Attachment E, Criteria F*.)  
 
-OpenShift, a platform powered by Red Hat and FedRAMP Certified on ARC-P, was used to host our Platform-as-a-Service (PaaS) deployment (Refer to Attachment E, Criteria D.) OpenShift provided our application with continuous monitoring services, ensuring proper connectivity, and maintenance of any security gaps (*refer to Attachment E, Criteria H*.)  To deploy our application, we used Docker, a virtualized operation system, inside of an Apache Tomcat servlet container (*refer to Attachment E, Criteria I & K*.)  
+OpenShift, a platform powered by Red Hat and FedRAMP Certified on ARC-P, was used to host our Platform-as-a-Service (PaaS) deployment (Refer to Attachment E, Criteria D.) OpenShift provided our application with continuous monitoring services, ensuring proper connectivity, and maintenance to address any security gaps (*refer to Attachment E, Criteria H*.)  To deploy our application, we used Docker, a virtualized operation system, inside of an Apache Tomcat servlet container (*refer to Attachment E, Criteria I & K*.)  
 
 ### Closing:
 After establishing the infrastructure of our system, a second sprint was initiated to conduct usability tests. During these tests our DevOps Engineers and our frontend/backend web developer met on a frequent basis to test the system, provide feedback, and resolve any last minute defects.
