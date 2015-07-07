@@ -1,5 +1,5 @@
 # 18f Prototype
-The iWorks team used our trademark pending Agile Implementation Methodology (iAIM™) to design, develop, and build the prototype (for more information, please refer to the iAIM Whitepaper.md in GitHub.)  The following summarizes the approach we applied to create the prototype.
+The iWorks team used our trademark pending iWorks Agile Implementation Methodology (iAIM™) to design, develop, and build the prototype (for more information, please refer to the iAIM Whitepaper.md in GitHub.)  The following summarizes the approach we applied to create the prototype.
 
 ### Project Identification:
 Upon reviewing the RFQ requirements, iWorks' management team identified Scott Kerr as the lead for this effort. Scott conducted a detailed review of the requirements by analyzing the FDA dataset and defining the project’s stakeholders in order to generate a system request to gain approval from management.
