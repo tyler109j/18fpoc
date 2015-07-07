@@ -2,7 +2,7 @@
 The iWorks team used our trademark pending Agile Implementation Methodology (iAIM™) to design, develop, and build the prototype (for more information, please refer to the iAIM Whitepaper.md in GitHub.)  The following summarizes the approach we applied to create the prototype.
 
 ### Project Identification:
-Upon reviewing the RFP requirements, iWorks' management team identified Scott Kerr as the lead for this effort. Scott conducted a detailed review of the requirements by analyzing the FDA dataset and defining the project’s stakeholders in order to generate a system request to gain approval from management.
+Upon reviewing the RFQ requirements, iWorks' management team identified Scott Kerr as the lead for this effort. Scott conducted a detailed review of the requirements by analyzing the FDA dataset and defining the project’s stakeholders in order to generate a system request to gain approval from management.
 
 ### Planning: 
 With approval from management, and leadership from Scott, a core team was created, combining expertise in four labor categories: Technical Architect, Frontend Web Developer, Backend Developer, and DevOps Engineer (*refer to Attachment E, Criteria B*.) The team established the project plan and scope. Scott finalized the project schedule and uploaded it on GitHub to ensure that all team members were aware of their responsibilities (*refer to Attachment E, Criteria A*.) Additionally, the team scheduled daily standup meetings for the duration of the project to focus on continuous iterations of the prototype and project status; as well as the development and testing in order to resolve any occurring issues (*refer to Attachment E, Criteria J*.)
