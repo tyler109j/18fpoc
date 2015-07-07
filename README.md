@@ -9,7 +9,7 @@ With approval from management, and leadership from Scott, a core team was create
 
 Taking a multidisciplinary and collaborative approach, the core team analyzed RFQ requirements and FDA open dataset/API to explore the various prototype options to develop, including technology architectures and toolsets.
 
-To meet guideline recommendations from the U.S. Digital Services Playbook, the team organized multiple JAD sessions with relevant stakeholders to begin the development process. Applying a user-centric approach during these JAD sessions, the team created different personas to represent users that may access the web application. These sessions would prove to be essential to the team in creating high-level use cases, identifying human-centered elements, and creating a working prototype.
+To meet guideline recommendations from the U.S. Digital Services Playbook, the team organized multiple Joint Application Design (JAD) sessions with relevant stakeholders to begin the development process. Applying a user-centric approach during these JAD sessions, the team created different personas to represent users that may access the web application. These sessions would prove to be essential to the team in creating high-level use cases, identifying human-centered elements, and creating a working prototype.
 
 Due to the iterative characteristics of this project, the team selected an agile methodology based on rapid prototyping to deliver the project on time.
 
