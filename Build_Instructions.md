@@ -3,6 +3,7 @@
 
 To use the virtualized container run the command in the project directory
  docker build -t "18fpocdev" .
+ 
 after the image is built, run the following command
 docker run -i -t -p 8080:8080 18fpocdev
 your app should be available at the following url http://{yourdockervmipaddress}:8080/18fpoc
